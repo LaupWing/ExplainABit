@@ -9,4 +9,5 @@
 }
 .Navigation .left{
     display: flex;
+    flex-grow: 1;
 }

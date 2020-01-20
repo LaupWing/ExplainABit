@@ -3,6 +3,7 @@
     display: flex;
     width: 400px;
     margin-left: 10px;
+    flex-grow: 1;
 }
 .Search input{
     background: none;
