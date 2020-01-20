@@ -2,6 +2,7 @@
     background: transparent;
     display: flex;
     width: 400px;
+    margin-left: 10px;
 }
 .Search input{
     background: none;
@@ -12,11 +13,11 @@
 }
 .Search input::placeholder{
     color: var(--turqoise);
-    opacity: .5;
+    opacity: .25;
 }
 .Search svg{
     margin: 0 15px;
-    width: 40px;
+    width: 30px;
 }
 .Search svg > *{
     fill: var(--turqoise);

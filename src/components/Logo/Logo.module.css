@@ -1,0 +1,16 @@
+.nav{
+    margin: 0 15px;
+    width: 60px;
+    transition: .5s;
+    cursor: pointer;
+}
+.nav > *{
+    fill: var(--turqoise);
+    transition: .5s;
+}
+.nav:hover{
+    transform: scale(.9);
+}
+.nav:hover > path{
+    fill: var(--darkTurqoise);
+}

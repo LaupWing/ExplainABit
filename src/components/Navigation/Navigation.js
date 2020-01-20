@@ -1,9 +1,13 @@
 import React from 'react'
 import classes from './Navigation.module.css'
-import Searchbar from '../Searchbar/Searchbar'
+import Searchbar from './Searchbar/Searchbar'
+import Logo from '../Logo/Logo'
 
-export default (props)=>(
+export default ()=>(
     <nav className={classes.Navigation}>
-        <Searchbar/>
+        <div className={classes.left}>
+            <Logo logoType='nav'/>
+            <Searchbar/>
+        </div>
     </nav>
 )
