@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     --darkBlue: #071e3d;
+    --darkBlueContrast: #0f243f;
     --blue: #1f4287;
     --darkTurqoise: #278ea5;
     --turqoise: #21e6c1;
@@ -22,5 +23,4 @@ input{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 10vh;
 }

@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import Aux from '../Auxilliry/Auxilliry'
 import classes from './Layout.module.css'
-import Searchbar from '../../components/Searchbar/Searchbar'
+import Navigation from '../../components/Navigation/Navigation'
 class Layout extends Component{
     render(){
         return(
             <Aux>
-                <Searchbar/>
+                <Navigation/>
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>

@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
-import Searchbar from './components/Searchbar/Searchbar'
+import React, {Component} from 'react';
+import Layout from './hoc/Layout/Layout'
 class App extends Component{
     render(){
         return(   
             <div id="App">
-                <Searchbar/>
+                <Layout>
+                </Layout>
             </div>
         )
     }
