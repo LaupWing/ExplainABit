@@ -1,0 +1,8 @@
+.Button{
+    text-transform: uppercase;
+    background: var(--turqoise);
+    border: none;
+    border-radius: 100px;
+    color: var(--darkBlue);
+    padding: 6px 10px;
+}
