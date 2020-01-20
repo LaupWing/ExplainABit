@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Searchbar.module.css'
 export default ()=>{
     const config = {
-        placeholder: 'What you are looking for ?...'
+        placeholder: 'What you are looking for... ?'
     }
     return (
         <form className={classes.Search}>

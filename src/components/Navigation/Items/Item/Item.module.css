@@ -1,0 +1,6 @@
+.Item{
+    color: var(--turqoise);
+    font-weight: 500;
+    padding: 0 25px;
+    font-size: 1.2rem;
+}

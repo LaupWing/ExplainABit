@@ -1,7 +1,9 @@
 import React from 'react'
 import Item from './Item/Item'
+import classes from './Items.module.css'
+
 export default ()=>(
-    <ul>
+    <ul className={classes.Items}>
         <Item>
             Contact
         </Item>
