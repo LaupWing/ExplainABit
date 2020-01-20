@@ -1,13 +1,9 @@
 .Search{
-    border: var(--turqoise) solid 3px;
     background: transparent;
-    border-radius: 100px;
     display: flex;
-    padding: 5px;
     width: 400px;
 }
 .Search input{
-    padding-left: 5px;
     background: none;
     border: none;
     flex-grow: 1;
@@ -15,6 +11,13 @@
     font-size: 1.2rem;
 }
 .Search input::placeholder{
-    color: var(--white);
+    color: var(--turqoise);
     opacity: .5;
+}
+.Search svg{
+    margin: 0 15px;
+    width: 40px;
+}
+.Search svg > *{
+    fill: var(--turqoise);
 }
