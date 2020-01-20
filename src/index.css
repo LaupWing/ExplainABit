@@ -18,6 +18,9 @@ body {
 input{
     outline: none;
 }
+li{
+    list-style: none;
+}
 #App{
     display: flex;
     align-items: center;
