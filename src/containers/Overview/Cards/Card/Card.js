@@ -21,9 +21,7 @@ export default class extends Component{
             })
         }
     }
-    animationEndHandler= (e)=>{
-        console.log('animationended',e)
-    }
+    
     render(){
         const CardComponent = lazy(()=>import(`./ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
         const daysAgo = moment(this.props.date).fromNow() === 'a few seconds ago' ? 'today' : moment(this.props.date).fromNow()
@@ -37,7 +35,6 @@ export default class extends Component{
                     <main>
                         <div 
                             className={`${classes.description} ${classes[this.state.descriptionClass]}`}
-                            onAnimationEnd={this.animationEndHandler}
                         >
                             <p>{this.props.meta.description}</p>
                         </div>
