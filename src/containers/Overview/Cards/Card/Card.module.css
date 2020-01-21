@@ -3,9 +3,27 @@
     padding: 8px;
     display: flex;
     margin: auto;
+    transition: transform .5s;
+    cursor: pointer;
 }
 
-.Card
+.Card:hover{
+    transform: scale(1.05);
+}
+
+.Card header{
+    background: var(--blue);
+    padding: 5px;
+}
+.added{
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--darkBlue);
+}
+.added span{
+    font-weight: bold;
+}
+
 .content{
     width: 280px;
     height: 300px;

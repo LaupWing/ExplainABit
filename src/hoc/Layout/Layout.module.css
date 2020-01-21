@@ -15,4 +15,5 @@
 .Content p{
     font-size: 1rem;
     opacity: .3;
+    max-width: 70%;
 }

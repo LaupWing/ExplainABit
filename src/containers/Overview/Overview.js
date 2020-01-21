@@ -9,7 +9,7 @@ class Overview extends Component{
         return(
             <Aux>
                 <h2>Latest React Mini Projects</h2>
-                <p>My personal archive of react concepts. Feel free to use some of it for your own project</p>
+                <p>My personal archive of react concepts. Feel free to use some of it for your own project. NOTE: these projects are not whole projects just a little projects of some concepts</p>
                 <Cards 
                     componentMeta={this.props.componentMeta}
                 />

@@ -10,8 +10,8 @@ export default (props)=>{
         <div className={classes.Card}>
             <div className={classes.content}>
                 <header>
-                    <h2>{props.meta.name}</h2>
-                    <h2><span>Added: </span>{daysAgo}</h2>
+                    <h2 className='name'>{props.meta.name}</h2>
+                    <h2 className={classes.added}><span>Added: </span>{daysAgo}</h2>
                 </header>
                 <Suspense fallback={<div>Loading...</div>}>
                     <CardComponent/>
