@@ -11,6 +11,13 @@
     transform: scale(1.05);
 }
 
+.Card main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    flex-grow: 1;
+}
+
 .Card header{
     background: var(--blue);
     padding: 5px;
@@ -26,27 +33,18 @@
 
 .description{
     width: 100%;
-    flex-grow: 1;
     background: var(--blue);
     display: flex;
     justify-content: center;
     align-items: center;
     transform-origin: bottom;
     transform: scaleY(0);
+    transition: 1s;
+    grid-column: 1;
+    grid-row: 1;
 }
 .description.show{
-    animation: scaleY forwards 1s;
-}
-.description.hide{
-    animation: scaleY reverse 1s;
-}
-@keyframes scaleY{
-    from{
-        transform: scaleY(0)
-    }
-    to{
-        transform: scaleX(1)
-    }
+    transform: scaleY(1);
 }
 .description p{
     max-height: 80%;
@@ -55,7 +53,8 @@
 }
 .componentContainer{
     margin: 5px;
-    flex-grow: 1;
+    grid-column: 1;
+    grid-row: 1;
     opacity: .1;
     transition: opacity .5s;
 }

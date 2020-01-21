@@ -6,17 +6,20 @@ import Button from '../../../../components/UI/Button/Button'
 export default class extends Component{
     state={
         showDescription: false,
-        hidingClass: 'show'
+        descriptionClass: ''
     }
     toggleDescription=()=>{
         if(this.state.showDescription){
-            // this.setState({
-            //     hidingClass: 'hide'
-            // })
+            this.setState({
+                showDescription: false,
+                descriptionClass: ''
+            })
+        }else{
+            this.setState({
+                showDescription: true,
+                descriptionClass: 'show'
+            })
         }
-        this.setState({
-            showDescription: !this.state.showDescription
-        })
     }
     animationEndHandler= (e)=>{
         console.log('animationended',e)
@@ -31,20 +34,23 @@ export default class extends Component{
                         <h2 className='name'>{this.props.meta.name}</h2>
                         <h2 className={classes.added}><span>Added: </span>{daysAgo}</h2>
                     </header>
-                    
-                    {!this.state.showDescription
-                        ?   <div className={classes.componentContainer}>
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <CardComponent/>
-                                </Suspense>
-                            </div>
-                        :   <div 
-                                className={`${classes.description} ${classes[this.state.hidingClass]}`}
-                                onAnimationEnd={this.animationEndHandler}
-                            >
+                    <main>
+                        <div 
+                            className={`${classes.description} ${classes[this.state.descriptionClass]}`}
+                            onAnimationEnd={this.animationEndHandler}
+                        >
                             <p>{this.props.meta.description}</p>
                         </div>
-                    }
+
+                        {!this.state.showDescription
+                            ?   <div className={classes.componentContainer}>
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <CardComponent/>
+                                    </Suspense>
+                                </div>
+                            :   null
+                        }
+                    </main>
                     <Button 
                         btnType={!this.state.showDescription ? 'showDescription' : 'hideDescription'}
                         clicked={this.toggleDescription}
