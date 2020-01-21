@@ -10,7 +10,7 @@ export default ()=>(
         <Item>
             Questions
         </Item>
-        <Item>
+        <Item itemType='higlight'>
             News
         </Item>
     </ul>
