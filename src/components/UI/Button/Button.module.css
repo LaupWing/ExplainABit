@@ -9,7 +9,7 @@
     cursor: pointer;
 }
 
-.Button.description{
+.Button.showDescription{
     opacity: .2;
     border-radius: 0;
     background: transparent;
@@ -17,8 +17,17 @@
     border: none;
 }
 
-.Button.description:hover{
+.Button.showDescription:hover,
+.Button.hideDescription{
     background: var(--turqoise);
     color: var(--darkBlue);
     opacity: 1;
+    border-radius: 0;
+}
+
+.Button.hideDescription:hover{
+    border: solid var(--turqoise) 1px;
+    color: var(--turqoise);
+    opacity: 1;
+    background: transparent;
 }

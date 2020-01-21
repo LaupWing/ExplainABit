@@ -15,7 +15,8 @@ body {
     sans-serif;
     background: var(--darkBlue);
 }
-input{
+input,
+button{
     outline: none;
 }
 li{

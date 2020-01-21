@@ -27,7 +27,29 @@
 .description{
     width: 100%;
     flex-grow: 1;
-    background: orange;
+    background: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: bottom;
+    animation: scaleY forwards 1s;
+    transform: scaleY(0);
+}
+.description.hide{
+    animation: scaleY reverse 1s;
+}
+@keyframes scaleY{
+    from{
+        transform: scaleY(0)
+    }
+    to{
+        transform: scaleX(1)
+    }
+}
+.description p{
+    max-height: 80%;
+    max-width: 90%;
+    overflow-y: auto;
 }
 .componentContainer{
     margin: 5px;
