@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card/Card'
+import classes from './Cards.module.css'
 
 export default (props)=>{
     const cards = props.componentMeta.map((meta,index)=>{
@@ -11,7 +12,7 @@ export default (props)=>{
         )
     })
     return(
-        <div>
+        <div className={classes.Cards}>
             {cards}
         </div>
     )

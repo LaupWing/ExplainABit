@@ -1,0 +1,15 @@
+.Card{
+    flex: 0 0 25%;
+    padding: 8px;
+    display: flex;
+    margin: auto;
+}
+
+.Card
+.content{
+    width: 280px;
+    height: 300px;
+    flex-grow: 1;
+    background: var(--darkBlueContrast);
+    border-radius: 2px;
+}
