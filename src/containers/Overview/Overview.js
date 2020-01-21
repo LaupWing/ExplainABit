@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 
 class Overview extends Component{
 
-    componentDidMount(){
-        console.log(this.props)
-    }
-
     render(){
         return(
             <div>

@@ -1,7 +1,12 @@
 import * as actionTypes from '../actions/actionTypes'
-
 const initialState = {
-    componentMeta:[]
+    componentMeta:[
+        {
+            name: 'Axios',
+            date: [2020-1-21],
+            description: ''
+        }
+    ]
 }
 
 const reducer =(state=initialState, action)=>{
