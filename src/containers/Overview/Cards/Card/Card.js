@@ -6,14 +6,14 @@ import Button from '../../../../components/UI/Button/Button'
 export default class extends Component{
     state={
         showDescription: false,
-        hidingClass: null
+        hidingClass: 'show'
     }
     toggleDescription=()=>{
-        // if(this.state.showDescription){
-        //     this.setState({
-        //         hidingClass: 'hide'
-        //     })
-        // }
+        if(this.state.showDescription){
+            // this.setState({
+            //     hidingClass: 'hide'
+            // })
+        }
         this.setState({
             showDescription: !this.state.showDescription
         })

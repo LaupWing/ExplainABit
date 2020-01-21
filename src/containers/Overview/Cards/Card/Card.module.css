@@ -32,8 +32,10 @@
     justify-content: center;
     align-items: center;
     transform-origin: bottom;
-    animation: scaleY forwards 1s;
     transform: scaleY(0);
+}
+.description.show{
+    animation: scaleY forwards 1s;
 }
 .description.hide{
     animation: scaleY reverse 1s;
