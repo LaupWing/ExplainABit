@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 class Overview extends Component{
+
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     render(){
         return(
             <div>
@@ -11,4 +17,10 @@ class Overview extends Component{
     }
 }
 
-export default Overview
+const mapStatesToProps =(state)=>{
+    return{
+        componentMeta: state.componentMeta
+    }
+}
+
+export default connect(mapStatesToProps)(Overview)
