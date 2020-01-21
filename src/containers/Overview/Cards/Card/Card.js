@@ -1,6 +1,7 @@
 import React, {Suspense, lazy} from 'react'
 import moment from 'moment'
 import classes from './Card.module.css'
+import Button from '../../../../components/UI/Button/Button'
 
 export default (props)=>{
     const CardComponent = lazy(()=>import(`./ComponentLib/${props.meta.name}/${props.meta.name}`))
@@ -13,9 +14,17 @@ export default (props)=>{
                     <h2 className='name'>{props.meta.name}</h2>
                     <h2 className={classes.added}><span>Added: </span>{daysAgo}</h2>
                 </header>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <CardComponent/>
-                </Suspense>
+                <div className={classes.description}>
+
+                </div>
+                <div className={classes.componentContainer}>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <CardComponent/>
+                    </Suspense>
+                </div>
+                <Button btnType='description'>
+                    Show description
+                </Button>
             </div>
         </div>
     )

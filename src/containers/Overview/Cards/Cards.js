@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Card from './Card/Card'
 import classes from './Cards.module.css'
 

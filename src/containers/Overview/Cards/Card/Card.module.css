@@ -24,10 +24,27 @@
     font-weight: bold;
 }
 
+.description{
+    width: 100%;
+    flex-grow: 1;
+    background: orange;
+}
+.componentContainer{
+    margin: 5px;
+    flex-grow: 1;
+    opacity: .1;
+    transition: opacity .5s;
+}
+.componentContainer:hover{
+    opacity: 1;
+}
 .content{
+    position: relative;
     width: 280px;
     height: 300px;
     flex-grow: 1;
     background: var(--darkBlueContrast);
     border-radius: 2px;
+    display: flex;
+    flex-direction: column;
 }

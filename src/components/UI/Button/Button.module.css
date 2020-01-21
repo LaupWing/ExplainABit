@@ -5,4 +5,20 @@
     border-radius: 100px;
     color: var(--darkBlue);
     padding: 6px 10px;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.Button.description{
+    opacity: .2;
+    border-radius: 0;
+    background: transparent;
+    color: var(--turqoise);
+    border: none;
+}
+
+.Button.description:hover{
+    background: var(--turqoise);
+    color: var(--darkBlue);
+    opacity: 1;
 }
