@@ -2,8 +2,9 @@ import React, {Component,Suspense, lazy} from 'react'
 import moment from 'moment'
 import classes from './Card.module.css'
 import Button from '../../../../components/UI/Button/Button'
+import {withRouter} from 'react-router'
 
-export default class extends Component{
+class Card extends Component{
     state={
         showDescription: false,
         descriptionClass: ''
@@ -21,12 +22,23 @@ export default class extends Component{
             })
         }
     }
-    
+    cardClickHandler=(e)=>{
+        if(e.target.closest('button')){
+            this.toggleDescription()
+        }else{
+            this.props.history.push('/detail')
+            console.log(this.props)
+            console.log('dont go away')
+        }
+    }
     render(){
         const CardComponent = lazy(()=>import(`./ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
         const daysAgo = moment(this.props.meta.date).fromNow()
         return (
-            <div className={classes.Card}>
+            <div 
+                className={classes.Card}
+                onClick={this.cardClickHandler}
+            >
                 <div className={classes.content}>
                     <header>
                         <h2 className='name'>{this.props.meta.name}</h2>
@@ -50,7 +62,6 @@ export default class extends Component{
                     </main>
                     <Button 
                         btnType={!this.state.showDescription ? 'showDescription' : 'hideDescription'}
-                        clicked={this.toggleDescription}
                     >
                         {!this.state.showDescription ? 'Show description' : 'Hide description'}
                     </Button>
@@ -59,3 +70,5 @@ export default class extends Component{
         )
     }
 }
+
+export default withRouter(Card)

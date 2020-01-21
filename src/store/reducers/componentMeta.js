@@ -1,7 +1,9 @@
 import * as actionTypes from '../actions/actionTypes'
 import data from './data'
+
 const initialState = {
-    componentMeta:data
+    componentMeta:data,
+    detail: null
 }
 
 const reducer =(state=initialState, action)=>{
