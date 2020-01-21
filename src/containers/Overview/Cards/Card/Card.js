@@ -3,7 +3,8 @@ import moment from 'moment'
 import classes from './Card.module.css'
 import Button from '../../../../components/UI/Button/Button'
 import {withRouter} from 'react-router'
-
+import * as actions from '../../../../store/actions/index'
+import {connect} from 'react-redux'
 class Card extends Component{
     state={
         showDescription: false,
@@ -27,8 +28,7 @@ class Card extends Component{
             this.toggleDescription()
         }else{
             this.props.history.push('/detail')
-            console.log(this.props)
-            console.log('dont go away')
+            this.props.onSetDetail('test')
         }
     }
     render(){
@@ -71,4 +71,10 @@ class Card extends Component{
     }
 }
 
-export default withRouter(Card)
+const mapDispatchToProps = dispatch=>{
+    return{
+        onSetDetail: (cmp) => dispatch(actions.setDetail(cmp))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(withRouter(Card))

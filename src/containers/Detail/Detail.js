@@ -4,6 +4,7 @@ import Aux from '../../hoc/Auxilliry/Auxilliry'
 
 class Detail extends Component{
     render(){
+        console.log(this.props)
         return(
             <Aux>
                 <h2>Detail</h2>

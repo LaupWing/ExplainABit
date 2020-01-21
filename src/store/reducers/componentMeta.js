@@ -6,9 +6,17 @@ const initialState = {
     detail: null
 }
 
+const setDetail = (state,action)=>{
+    return {
+        ...state,
+        detail: action.detail
+    }
+}
+
+
 const reducer =(state=initialState, action)=>{
     switch(action.type){
-        case actionTypes.SET_COMPONENTS: return state
+        case actionTypes.SET_DETAIL: return setDetail(state,action)
         default: return state
     }
 }
