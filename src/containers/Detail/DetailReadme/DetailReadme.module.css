@@ -2,4 +2,43 @@
     max-width: 50%;
     background-color: var(--white);
     color: var(--black);
+    padding: 10px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 5px;
+    overflow-x: hidden;
+}
+.DetailReadme li{
+    list-style: circle;
+    list-style-position: inside;
+}
+.DetailReadme img{
+    max-width: 100%;
+}
+.DetailReadme p, 
+.DetailReadme blockquote, 
+.DetailReadme ul, 
+.DetailReadme ol, 
+.DetailReadme dl, 
+.DetailReadme li, 
+.DetailReadme table, 
+.DetailReadme pre {
+    margin: 15px 0;
+}
+
+.DetailReadme td,
+.DetailReadme tr{
+    display: flex;
+    flex-wrap: wrap;
+}
+.DetailReadme code, 
+.DetailReadme pre {
+    border-radius: 3px;
+    background-color: #F8F8F8;
+    color: inherit;
+}
+.DetailReadme h2 {
+    border-bottom: 1px solid #CCCCCC;
+    color: #000000;
+    font-size: 24px;
 }
