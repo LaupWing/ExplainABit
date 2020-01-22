@@ -4,6 +4,7 @@ import Aux from '../../hoc/Auxilliry/Auxilliry'
 import {Redirect} from 'react-router-dom'
 import DetailReadme from './DetailReadme/DetailReadme'
 import classes from './Detail.module.css'
+import DetailComponent from './DetailComponent/DetailComponent'
 
 class Detail extends Component{
     state={
@@ -35,9 +36,12 @@ class Detail extends Component{
                             <p>{this.props.detail.description}</p>
                             <main className={classes.DetailContent}>
                                 <DetailReadme
-                                    className={classes.DetailReadme}
                                     readme={this.state.readme}
                                 />
+                                <DetailComponent
+                                    meta={this.props.detail}
+                                />
+
                             </main>
                         </Aux>
                     :   <Redirect to='/'/>

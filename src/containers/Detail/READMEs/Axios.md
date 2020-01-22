@@ -174,7 +174,7 @@ Reach out to me at one of the following places!
 
 - You could include a link as well.
 
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/fvcproductions/)
+[![Support via Gratipay](https://lh3.googleusercontent.com/vRaD5xgLx3NtSW8HD9t7CIJRls_rttfQrQBdi88WjmMWR2QlAe12zH97_1MJyK4nmup5wUUkUIdZtV0LHSYJmrPvmjGqRm-bWQb7ujZaJnwNlaQefYvK5XcVk2Q0ZQYVv3q9Dn2JAYHI98IrHTHEfsyD1I1dVvzEUVQuvMMO85sqKaYa7YephwTE4BdNqodoDkVS3D0pHMN1UM8UsAt6dSqxfGzOA0dSv7G3fC1SQ4P3haUFfK6vjJpCLFAOeft8L3oct82VX0jyHKZpr6zWuqutrLzXlrED87H67gUzV2OXM4OD0_sTCNJQcvDxxmzn_gjbCGrYMYEbXg3YnPZ52wxOWfHiMWcC0Bg2IfMbq6YftCnqsvECYXUbNo0FnW18fSsnyZxJu6ixoLzBOCceQMtY2AjAeZqGVP3BA6pRB1IsHQbD5fOL331I0ovI0yZ-eLgYUrtTUMkqyK-bmTUOenZ0HrgiztnV0C5gY718GmxqPQc46d9BKuAzgdeG0qSjCzV2VvmMbS-OElM9Iu9kWpa955Pdq3k86qBLuQqVWg8ZmJDAfKBGrGLXSM3teNScrHYJo8G53zQN7eY5eno1wdNn4ygOmxGiq3t_rL1woe9sy23src6pQB896OI2_E9G3nbrw-YRrElNuYKC8_aa4vFL4RC9tD-Ah9aNPwIZKGbe4kPUeQ3HnA=w241-h209-no)](https://gratipay.com/fvcproductions/)
 
 
 ---

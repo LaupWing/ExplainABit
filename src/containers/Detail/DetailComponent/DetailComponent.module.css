@@ -1,0 +1,10 @@
+.DetailComponent{
+    width: 49%;
+    background-color: var(--white);
+    color: var(--black);
+    padding: 10px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 5px;
+    overflow-x: hidden;
+}
