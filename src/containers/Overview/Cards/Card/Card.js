@@ -28,7 +28,7 @@ class Card extends Component{
             this.toggleDescription()
         }else{
             this.props.history.push('/detail')
-            this.props.onSetDetail('test')
+            this.props.onSetDetail(this.props.meta)
         }
     }
     render(){
