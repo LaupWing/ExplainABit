@@ -44,6 +44,12 @@
 .DetailReadme pre {
     margin: 15px 0;
 }
+.DetailReadme ul >li{
+    margin: 0;
+}
+.DetailReadme h2{
+    margin-top: 30px;
+}
 
 .DetailReadme td,
 .DetailReadme tr{

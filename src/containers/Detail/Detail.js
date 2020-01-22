@@ -41,7 +41,6 @@ class Detail extends Component{
                                 <DetailComponent
                                     meta={this.props.detail}
                                 />
-
                             </main>
                         </Aux>
                     :   <Redirect to='/'/>
