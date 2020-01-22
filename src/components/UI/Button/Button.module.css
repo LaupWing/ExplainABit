@@ -26,8 +26,7 @@
 }
 
 .Button.hideDescription:hover{
-    border: solid var(--turqoise) 1px;
     color: var(--turqoise);
     opacity: 1;
-    background: transparent;
+    background: var(--blue);
 }

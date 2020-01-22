@@ -4,17 +4,31 @@ import Aux from '../../hoc/Auxilliry/Auxilliry'
 import {Redirect} from 'react-router-dom'
 
 class Detail extends Component{
+    state={
+        readme: null
+    }
+
+    getReadme(){
+        const readmePath = require(`./READMEs/${this.props.detail.name}.md`)
+        fetch(readmePath)
+            .then(response=>response.text)
+            .then(txt=>{
+                this.setState({
+                    readme: txt
+                })
+            })
+    }
+
     render(){
-        let detailContent = <Redirect to='/'/>
-        if(this.props.detail){
-            detailContent = (<Aux>
-                <h2><span>Name:</span>{this.props.detail.name}</h2>
-                <p>{this.props.detail.description}</p>
-            </Aux>)
-        }
         return(
             <Aux>
-                {detailContent}
+                {   this.props.detail
+                    ?   <Aux>
+                            <h2><span>Name:</span>{this.props.detail.name}</h2>
+                            <p>{this.props.detail.description}</p>
+                        </Aux>
+                    :   <Redirect to='/'/>
+                }
             </Aux>
         )
     }
