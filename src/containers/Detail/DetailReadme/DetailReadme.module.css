@@ -1,5 +1,5 @@
 .DetailReadme{
-    max-width: 48%;
+    max-width: 49%;
     background-color: var(--white);
     color: var(--black);
     padding: 10px;
@@ -8,12 +8,31 @@
     border-radius: 5px;
     overflow-x: hidden;
 }
+/* width */
+.DetailReadme::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+}
+
+/* Track */
+.DetailReadme::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+
+/* Handle */
+.DetailReadme::-webkit-scrollbar-thumb {
+    background: var(--turqoise); 
+    border-radius: 5px;
+}
+
 .DetailReadme li{
     list-style: circle;
     list-style-position: inside;
 }
 .DetailReadme img{
     max-width: 100%;
+    margin: auto;
 }
 .DetailReadme p, 
 .DetailReadme blockquote, 

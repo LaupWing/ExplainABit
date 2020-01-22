@@ -32,7 +32,7 @@ class Card extends Component{
         }
     }
     render(){
-        const CardComponent = lazy(()=>import(`./ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
+        const CardComponent = lazy(()=>import(`../../../../ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
         const daysAgo = moment(this.props.meta.date).fromNow()
         return (
             <div 
