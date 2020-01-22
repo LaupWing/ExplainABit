@@ -1,9 +1,11 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import classes from './DetailReadme.module.css'
 
-export default ()=>{
+export default (props)=>{
     return(
-        <div>
-            
+        <div className={classes.DetailReadme}>
+            <ReactMarkdown source={props.readme}/>
         </div>
     )
 }

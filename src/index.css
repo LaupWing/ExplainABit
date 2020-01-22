@@ -8,6 +8,7 @@
     --darkTurqoise: #278ea5;
     --turqoise: #21e6c1;
     --white: white;
+    --black:black;
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

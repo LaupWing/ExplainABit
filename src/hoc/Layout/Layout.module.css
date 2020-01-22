@@ -12,7 +12,7 @@
 .Content > h2{
     font-size: 2.5rem;
 }
-.Content p{
+.Content > p{
     font-size: 1rem;
     opacity: .3;
     max-width: 70%;

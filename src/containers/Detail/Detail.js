@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Aux from '../../hoc/Auxilliry/Auxilliry'
 import {Redirect} from 'react-router-dom'
-import ReactMarkdown from 'react-markdown'
+import DetailReadme from './DetailReadme/DetailReadme'
+import classes from './Detail.module.css'
+
 class Detail extends Component{
     state={
         readme: null
@@ -18,11 +20,8 @@ class Detail extends Component{
         fetch(readmePath)
             .then(response=>response.text())
             .then(txt=>{
-                
                 this.setState({
-                    readme: <ReactMarkdown source={txt}/>
-                },()=>{
-                    console.log(this.state.readme)
+                    readme: txt
                 })
             })
     }
@@ -34,7 +33,12 @@ class Detail extends Component{
                     ?   <Aux>
                             <h2><span>Name:</span>{this.props.detail.name}</h2>
                             <p>{this.props.detail.description}</p>
-                            {this.state.readme}
+                            <main className={classes.DetailContent}>
+                                <DetailReadme
+                                    className={classes.DetailReadme}
+                                    readme={this.state.readme}
+                                />
+                            </main>
                         </Aux>
                     :   <Redirect to='/'/>
                 }
