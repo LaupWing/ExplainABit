@@ -27,7 +27,7 @@ class Card extends Component{
         if(e.target.closest('button')){
             this.toggleDescription()
         }else{
-            this.props.history.push('/detail')
+            this.props.history.push(`/detail/${this.props.meta.name}`)
             this.props.onSetDetail(this.props.meta)
         }
     }

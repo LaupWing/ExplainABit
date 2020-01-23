@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Layout from './hoc/Layout/Layout'
 
 import Overview from './containers/Overview/Overview'
@@ -11,8 +11,9 @@ class App extends Component{
             <div id="App">
                 <Layout>
                     <Switch>
-                        <Route path="/detail" component={Detail}/>
+                        <Route path="/detail/:id" component={Detail}/>
                         <Route exact path="/" component={Overview}/>
+                        <Redirect to="/"/>
                     </Switch>
                 </Layout>
             </div>

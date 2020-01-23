@@ -16,8 +16,8 @@ class Detail extends Component{
     }
     
     getReadme(){
-        if(!this.props.detail) return
-        const readmePath = require(`./READMEs/${this.props.detail.name}.md`)
+        if(!this.props.match.params) return
+        const readmePath = require(`./READMEs/${this.props.match.params.id}.md`)
         fetch(readmePath)
             .then(response=>response.text())
             .then(txt=>{
@@ -28,18 +28,19 @@ class Detail extends Component{
     }
 
     render(){
+        const metaData = this.props.meta.find(meta=>meta.name===this.props.match.params.id)
         return(
             <Aux>
-                {   this.props.detail
+                {   metaData
                     ?   <Aux>
-                            <h2><span>Name:</span>{this.props.detail.name}</h2>
-                            <p>{this.props.detail.description}</p>
+                            <h2><span>Name:</span>{metaData.name}</h2>
+                            <p>{metaData.description}</p>
                             <main className={classes.DetailContent}>
                                 <DetailReadme
                                     readme={this.state.readme}
                                 />
                                 <DetailComponent
-                                    meta={this.props.detail}
+                                    meta={metaData}
                                 />
                             </main>
                         </Aux>
@@ -52,7 +53,7 @@ class Detail extends Component{
 
 const mapStateToProps = (state)=>{
     return{
-        detail: state.detail
+        meta: state.componentMeta
     }
 }
 
