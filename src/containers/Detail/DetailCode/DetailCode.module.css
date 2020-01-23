@@ -25,3 +25,7 @@
     cursor: pointer;
     transition: .25s;
 }
+
+.DetailCode main{
+    padding: 5px;
+}
