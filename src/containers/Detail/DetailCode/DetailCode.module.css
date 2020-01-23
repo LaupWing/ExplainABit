@@ -3,3 +3,15 @@
     background: var(--white);
     border-radius: 5px;
 }
+
+.FileNav{
+    display: flex;
+    background: var(--darkBlue);
+}
+
+.FileNav li{
+    padding: 5px 10px;
+    color: var(--darkBlue);
+    background: var(--turqoise);
+    border-radius: 10px 10px 0 0;
+}

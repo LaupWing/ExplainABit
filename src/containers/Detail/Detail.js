@@ -6,14 +6,20 @@ import DetailReadme from './DetailReadme/DetailReadme'
 import classes from './Detail.module.css'
 import DetailComponent from './DetailComponent/DetailComponent'
 import DetailCode from './DetailCode/DetailCode'
+import codes from '../../ComponentLib/codes'
 
 class Detail extends Component{
     state={
-        readme: null
+        readme: null,
+        codes: codes.find(c=>c.name === this.props.match.params.id),
+        activeFile: null
     }
 
     componentDidMount(){
         this.getReadme()
+        this.setState({
+            activeFile : this.state.codes.codes[0]
+        })
     }
     
     getReadme(){
@@ -46,6 +52,7 @@ class Detail extends Component{
                                     />
                                     <DetailCode
                                         meta={metaData}
+                                        activeFile={this.state.activeFile}
                                     />
                                 </div>
                             </main>
