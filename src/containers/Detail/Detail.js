@@ -21,6 +21,12 @@ class Detail extends Component{
             activeFile : this.state.codes.codes[0]
         })
     }
+
+    setActiveFile=(file)=>{
+        this.setState({
+            activeFile : file
+        })
+    }
     
     getReadme(){
         if(!this.props.match.params) return
@@ -53,6 +59,7 @@ class Detail extends Component{
                                     <DetailCode
                                         meta={metaData}
                                         activeFile={this.state.activeFile}
+                                        clicked={this.setActiveFile}
                                     />
                                 </div>
                             </main>

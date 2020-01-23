@@ -13,7 +13,7 @@ export default (props)=>{
             }
         }
         return (
-            <li className={classes[liClasses]} key={code.fileName}>{code.fileName}</li>
+            <li onClick={()=>props.clicked(code)} className={classes[liClasses]} key={code.fileName}>{code.fileName}</li>
         )
     })
     return(
