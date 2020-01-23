@@ -4,6 +4,7 @@ export default [
         codes:[
             {
                 type: 'javascript',
+                fileName: 'index.js',
                 code: `
                     import React from 'react';
                     import ReactDOM from 'react-dom';

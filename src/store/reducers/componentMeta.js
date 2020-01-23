@@ -2,14 +2,12 @@ import * as actionTypes from '../actions/actionTypes'
 import data from './data'
 
 const initialState = {
-    componentMeta:data,
-    detail: null
+    componentMeta:data
 }
 
 const setDetail = (state,action)=>{
     return {
-        ...state,
-        detail: action.detail
+        ...state
     }
 }
 

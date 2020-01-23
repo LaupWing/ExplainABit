@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom'
 import DetailReadme from './DetailReadme/DetailReadme'
 import classes from './Detail.module.css'
 import DetailComponent from './DetailComponent/DetailComponent'
+import DetailCode from './DetailCode/DetailCode'
 
 class Detail extends Component{
     state={
@@ -39,9 +40,14 @@ class Detail extends Component{
                                 <DetailReadme
                                     readme={this.state.readme}
                                 />
-                                <DetailComponent
-                                    meta={metaData}
-                                />
+                                <div className={classes.rightCol}>
+                                    <DetailComponent
+                                        meta={metaData}
+                                    />
+                                    <DetailCode
+                                        meta={metaData}
+                                    />
+                                </div>
                             </main>
                         </Aux>
                     :   <Redirect to='/'/>
