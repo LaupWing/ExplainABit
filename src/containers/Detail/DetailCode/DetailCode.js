@@ -8,14 +8,12 @@ export default (props)=>{
     const fileNav = componentCode.codes.map(code=>{
         let liClasses = null
         if(props.activeFile){
-            console.log('heh', props.activeFile, code)
             if(props.activeFile.fileName === code.fileName){
                 liClasses = 'active'
-                console.log('check')
             }
         }
         return (
-            <li className={liClasses} key={code.fileName}>{code.fileName}</li>
+            <li className={classes[liClasses]} key={code.fileName}>{code.fileName}</li>
         )
     })
     return(

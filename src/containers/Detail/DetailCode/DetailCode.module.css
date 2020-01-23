@@ -4,6 +4,13 @@
     border-radius: 5px;
 }
 
+
+.FileNav li.active,
+.FileNav li:hover{
+    background: var(--turqoise);
+    color: var(--darkBlue);
+}
+
 .FileNav{
     display: flex;
     background: var(--darkBlue);
@@ -11,7 +18,10 @@
 
 .FileNav li{
     padding: 5px 10px;
-    color: var(--darkBlue);
-    background: var(--turqoise);
+    color: var(--turqoise);
+    border: var(--turqoise) solid 1px;
+    background: transparent;
     border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: .25s;
 }
