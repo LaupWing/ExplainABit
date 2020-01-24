@@ -29,7 +29,7 @@ export default (props)=>{
             .code.split(/\n/)
             .filter(c=>c!=='')
             .map(c=>{
-                const firstChar = c.match('[a-zA-Z]')    
+                const firstChar = c.match('[a-zA-Z<]')    
                 const index = c.indexOf(firstChar)
                 if(!initialWhiteSpace){
                     initialWhiteSpace = index
@@ -38,6 +38,7 @@ export default (props)=>{
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
+            
         code = (
             <Highlight language={findCodeActiveFile.type}>
                 {tabFixed}
