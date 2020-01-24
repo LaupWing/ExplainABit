@@ -31,6 +31,8 @@
 .DetailCode main{
     flex-grow: 1;
     border: var(--turqoise) solid 2px;
+    border-top-width: 1px;
+    border-radius: 5px;
     overflow-y: auto;
     background: #19171c;
     overflow-x: auto;
