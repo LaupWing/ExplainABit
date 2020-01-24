@@ -20,26 +20,20 @@ export default (props)=>{
         )
     })
     
-    const code = props.activeFile ? componentCode.codes.find(c=>c.fileName===props.activeFile.fileName) : null
+    let code = props.activeFile ? componentCode.codes.find(c=>c.fileName===props.activeFile.fileName) : null
 
-    let initialWhiteSpace = null 
     if(props.activeFile){
+        let initialWhiteSpace = null 
         const clean = code
             .code.split(/\n/)
             .filter(c=>c!=='')
             .map(c=>{
-                console.log(c)
-                console.log(c.length, 'c.length')
-                const firstChar = c.match('[a-zA-Z]')
-                
+                const firstChar = c.match('[a-zA-Z]')    
                 const index = c.indexOf(firstChar)
-                console.log(index)
                 if(!initialWhiteSpace){
                     initialWhiteSpace = index
                 }
                 const sliceSize = c.length - initialWhiteSpace
-                console.log(sliceSize, 'slicesize')
-                console.log(c.slice(-sliceSize))
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
