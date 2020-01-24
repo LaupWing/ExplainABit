@@ -1,7 +1,9 @@
 import React from 'react'
 import classes from './DetailCode.module.css'
 import codes from '../../../ComponentLib/codes'
-import Highlight from 'react-highlight'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atelierCaveDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 
 export default (props)=>{
     const componentCode = codes.find(c=>c.name === props.meta.name)
@@ -40,9 +42,9 @@ export default (props)=>{
             .join("\r\n")
             
         code = (
-            <Highlight language={findCodeActiveFile.type}>
+            <SyntaxHighlighter language={findCodeActiveFile.type} style={atelierCaveDark}>
                 {tabFixed}
-            </Highlight>
+            </SyntaxHighlighter>
         )
     }
     return(
