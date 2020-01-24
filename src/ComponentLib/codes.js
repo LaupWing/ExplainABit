@@ -43,6 +43,27 @@ export default [
                     import './index.css';
                     import App from './App';
                 `
+            },
+            {
+                type: 'css',
+                fileName: 'main.css',
+                code: `
+                    .DetailContent{
+                        margin-top: 5vh;
+                        display: flex;
+                        width: 100%;
+                        height: 70vh;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                    }
+                    .rightCol{
+                        width: 49%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+                `
             }
         ]
     }

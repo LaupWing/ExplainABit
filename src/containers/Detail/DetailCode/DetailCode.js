@@ -19,12 +19,14 @@ export default (props)=>{
             <li onClick={()=>props.clicked(code)} className={classes[liClasses]} key={code.fileName}>{code.fileName}</li>
         )
     })
-    
-    let code = props.activeFile ? componentCode.codes.find(c=>c.fileName===props.activeFile.fileName) : null
+
+    let code = null
 
     if(props.activeFile){
+        const findCodeActiveFile = componentCode.codes.find(c=>c.fileName===props.activeFile.fileName)
+        console.log(findCodeActiveFile)
         let initialWhiteSpace = null 
-        const clean = code
+        const tabFixed = findCodeActiveFile
             .code.split(/\n/)
             .filter(c=>c!=='')
             .map(c=>{
@@ -37,17 +39,17 @@ export default (props)=>{
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
-        console.log(clean)
+        code = (
+            <Highlight language={findCodeActiveFile.type}>
+                {tabFixed}
+            </Highlight>
+        )
     }
     return(
         <div className={classes.DetailCode}>
             <nav className={classes.FileNav}>{fileNav}</nav>
             <main>
-                {props.activeFile && 
-                    <Highlight language="javascript">
-                        {code.code.trim()}
-                    </Highlight>
-                }
+                {code}
             </main>
         </div>
     )
