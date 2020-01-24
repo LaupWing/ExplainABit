@@ -24,7 +24,6 @@ export default (props)=>{
 
     if(props.activeFile){
         const findCodeActiveFile = componentCode.codes.find(c=>c.fileName===props.activeFile.fileName)
-        console.log(findCodeActiveFile)
         let initialWhiteSpace = null 
         const tabFixed = findCodeActiveFile
             .code.split(/\n/)

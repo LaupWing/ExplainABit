@@ -2,6 +2,8 @@
     height: 54%;
     background: var(--white);
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -27,5 +29,38 @@
 }
 
 .DetailCode main{
-    padding: 10px;
+    flex-grow: 1;
+    border: var(--turqoise) solid 2px;
+    overflow-y: auto;
+    background: #19171c;
+    overflow-x: auto;
+}
+.DetailCode pre{
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.DetailCode code{
+    overflow-x: initial;
+    min-height: 100%;
+}
+
+/* width */
+.DetailCode main::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+}
+
+/* Track */
+.DetailCode main::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+
+/* Handle */
+.DetailCode main::-webkit-scrollbar-thumb {
+    background: var(--turqoise); 
+    border-radius: 5px;
 }
