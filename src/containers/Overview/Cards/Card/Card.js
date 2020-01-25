@@ -6,6 +6,10 @@ import {withRouter} from 'react-router'
 import * as actions from '../../../../store/actions/index'
 import {connect} from 'react-redux'
 class Card extends Component{
+    constructor(props){
+        super(props)
+        this.cardRef = React.createRef()
+    }
     state={
         showDescription: false,
         descriptionClass: ''
@@ -32,7 +36,10 @@ class Card extends Component{
         }
     }
     render(){
-        const CardComponent = lazy(()=>import(`../../../../ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
+        // const CardComponent = lazy(()=>import(`../../../../ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
+        import(`../../../../ComponentLib/${this.props.meta.name}/index.js`).then((file)=>{
+            file.default(this.cardRef)
+        })
         const daysAgo = moment(this.props.meta.date).fromNow()
         return (
             <div 
@@ -52,10 +59,10 @@ class Card extends Component{
                         </div>
 
                         {!this.state.showDescription
-                            ?   <div className={classes.componentContainer}>
-                                    <Suspense fallback={<div>Loading...</div>}>
+                            ?   <div ref={this.cardRef} className={classes.componentContainer}>
+                                    {/* <Suspense fallback={<div>Loading...</div>}>
                                         <CardComponent/>
-                                    </Suspense>
+                                    </Suspense> */}
                                 </div>
                             :   null
                         }
