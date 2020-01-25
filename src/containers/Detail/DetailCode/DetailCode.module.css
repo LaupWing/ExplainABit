@@ -26,6 +26,13 @@
     border-radius: 10px 10px 0 0;
     cursor: pointer;
     transition: .25s;
+    border-right: none;
+}
+.FileNav li:first-of-type{
+    border-right: var(--turqoise) solid 1px;
+}
+.FileNav li:last-of-type{
+    border-right: var(--turqoise) solid 1px;
 }
 .centering{
     display: flex;
