@@ -41,6 +41,7 @@
     transform: scaleY(0);
     transition: 1s;
     grid-column: 1;
+    z-index: 100;
     grid-row: 1;
 }
 .description.show{
@@ -57,7 +58,9 @@
     grid-row: 1;
     opacity: .1;
     transition: opacity .5s;
+    display: flex;
 }
+
 .componentContainer:hover{
     opacity: 1;
 }
@@ -70,4 +73,26 @@
     border-radius: 2px;
     display: flex;
     flex-direction: column;
+}
+/* Inside component styling (global component styling) */
+.componentContainer > div{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(.7);
+}
+.componentContainer > div button{
+    padding: 5px 10px;
+    background: transparent;
+    border: var(--turqoise) solid 2px;
+    border-radius: 100px;
+    color: var(--turqoise);
+    cursor: pointer;
+    transition: .25s;
+}
+.componentContainer > div button:hover{
+    background: var(--turqoise);
+    color: var(--darkBlue);
 }

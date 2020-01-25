@@ -56,15 +56,8 @@ class Card extends Component{
                         >
                             <p>{this.props.meta.description}</p>
                         </div>
-
-                        {!this.state.showDescription
-                            ?   <div ref={this.cardRef} className={classes.componentContainer}>
-                                    {/* <Suspense fallback={<div>Loading...</div>}>
-                                        <CardComponent/>
-                                    </Suspense> */}
-                                </div>
-                            :   null
-                        }
+                        <div ref={this.cardRef} className={classes.componentContainer}>
+                        </div>
                     </main>
                     <Button 
                         btnType={!this.state.showDescription ? 'showDescription' : 'hideDescription'}
