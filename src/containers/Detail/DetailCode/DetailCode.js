@@ -4,7 +4,8 @@ import codes from '../../../ComponentLib/codes'
 import Highlight from 'react-highlight'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierCaveDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
+import Loader from '../../../components/UI/Loader/Loader'
+import codesIndex from '../../../ComponentLib/codesIndex'
 
 export default (props)=>{
     const componentCode = codes.find(c=>c.name === props.meta.name)
@@ -23,6 +24,8 @@ export default (props)=>{
 
     let code = null
 
+    console.log(codesIndex[props.meta.name])
+
     if(props.activeFile){
         const findCodeActiveFile = componentCode.codes.find(c=>c.fileName===props.activeFile.fileName)
         let initialWhiteSpace = null 
@@ -39,7 +42,6 @@ export default (props)=>{
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
-        console.log()
         code = findCodeActiveFile.type === 'jsx'
             ? (
                 <Highlight className={findCodeActiveFile.type}>
