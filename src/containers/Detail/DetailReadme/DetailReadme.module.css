@@ -8,6 +8,13 @@
     border-radius: 5px;
     overflow-x: hidden;
 }
+
+.loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* width */
 .DetailReadme::-webkit-scrollbar {
     width: 10px;

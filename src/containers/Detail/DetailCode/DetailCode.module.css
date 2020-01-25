@@ -27,7 +27,11 @@
     cursor: pointer;
     transition: .25s;
 }
-
+.centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .DetailCode main{
     flex-grow: 1;
     border: var(--turqoise) solid 2px;
