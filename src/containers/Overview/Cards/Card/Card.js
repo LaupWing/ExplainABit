@@ -41,7 +41,7 @@ class Card extends Component{
             >
                 <div className={classes.content}>
                     <header>
-                        <h2 className='name'>{this.props.meta.name}</h2>
+                        <h2 className='name'>{this.props.meta.name.replace(/([A-Z])/g, ' $1').trim()}</h2>
                         <h2 className={classes.added}><span>Added: </span>{daysAgo}</h2>
                     </header>
                     <main>
