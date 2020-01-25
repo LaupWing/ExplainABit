@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const init = ()=>{
-    const axios =(
+    const BasicRedux =(
         <div>
-            Axios
+            BasicRedux
         </div>
     )
-    ReactDOM.render(axios, document.getElementById('output'));
+    ReactDOM.render(BasicRedux, document.getElementById('output'));
 }
 export default init
