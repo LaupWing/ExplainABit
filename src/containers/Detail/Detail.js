@@ -30,7 +30,8 @@ class Detail extends Component{
     
     getReadme(){
         if(!this.props.match.params) return
-        const readmePath = require(`./READMEs/${this.props.match.params.id}.md`)
+        const name = this.props.match.params.id
+        const readmePath = require(`../../ComponentLib/${name}/README.md`)
         fetch(readmePath)
             .then(response=>response.text())
             .then(txt=>{
