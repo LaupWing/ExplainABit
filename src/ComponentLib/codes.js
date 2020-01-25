@@ -3,7 +3,7 @@ export default [
         name: 'Axios',
         codes:[
             {
-                type: 'javascript|html',
+                type: 'jsx',
                 fileName: 'test.js',
                 code: `
                 import React, {Component} from 'react'
@@ -139,7 +139,7 @@ export default [
                 `
             },
             {
-                type: 'javascript',
+                type: 'jsx',
                 fileName: 'index.js',
                 code: `
                     import React from 'react';

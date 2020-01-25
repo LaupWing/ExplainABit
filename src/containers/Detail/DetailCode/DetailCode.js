@@ -1,11 +1,7 @@
 import React from 'react'
 import classes from './DetailCode.module.css'
 import codes from '../../../ComponentLib/codes'
-// import Highlight from 'react-highlight'
-
-// Need to delete higlight react and use react synthax highlighter
-
-
+import Highlight from 'react-highlight'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierCaveDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -43,12 +39,18 @@ export default (props)=>{
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
-            
-        code = (
-            <SyntaxHighlighter language={findCodeActiveFile.type} style={atelierCaveDark}>
-                {tabFixed}
-            </SyntaxHighlighter>
-        )
+        console.log()
+        code = findCodeActiveFile.type === 'jsx'
+            ? (
+                <Highlight className={findCodeActiveFile.type}>
+                    {tabFixed}
+                </Highlight>
+            )
+            : (
+                <SyntaxHighlighter language={findCodeActiveFile.type} style={atelierCaveDark}>
+                    {tabFixed}
+                </SyntaxHighlighter>
+            )
     }
     return(
         <div className={classes.DetailCode}>
