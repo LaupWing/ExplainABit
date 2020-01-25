@@ -1,4 +1,4 @@
-import React, {Component,Suspense, lazy} from 'react'
+import React, {Component} from 'react'
 import moment from 'moment'
 import classes from './Card.module.css'
 import Button from '../../../../components/UI/Button/Button'
@@ -36,7 +36,6 @@ class Card extends Component{
         }
     }
     render(){
-        // const CardComponent = lazy(()=>import(`../../../../ComponentLib/${this.props.meta.name}/${this.props.meta.name}`))
         import(`../../../../ComponentLib/${this.props.meta.name}/index.js`).then((file)=>{
             file.default(this.cardRef)
         })
