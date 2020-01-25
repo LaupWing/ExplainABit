@@ -1,14 +1,17 @@
 import React from 'react'
 import classes from './DetailCode.module.css'
 import codes from '../../../ComponentLib/codes'
+// import Highlight from 'react-highlight'
+
+// Need to delete higlight react and use react synthax highlighter
+
+
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierCaveDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 
 export default (props)=>{
     const componentCode = codes.find(c=>c.name === props.meta.name)
-    const test = require('../DetailReadme/DetailReadme')
-    console.log(test)
 
     const fileNav = componentCode.codes.map(code=>{
         let liClasses = null

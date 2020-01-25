@@ -3,7 +3,7 @@ export default [
         name: 'Axios',
         codes:[
             {
-                type: 'javascript',
+                type: 'javascript|html',
                 fileName: 'test.js',
                 code: `
                 import React, {Component} from 'react'
