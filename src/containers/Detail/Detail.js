@@ -6,19 +6,19 @@ import DetailReadme from './DetailReadme/DetailReadme'
 import classes from './Detail.module.css'
 import DetailComponent from './DetailComponent/DetailComponent'
 import DetailCode from './DetailCode/DetailCode'
-import codes from '../../ComponentLib/codes'
+import codeIndex from '../../ComponentLib/codesIndex'
 
 class Detail extends Component{
     state={
         readme: null,
-        codes: codes.find(c=>c.name === this.props.match.params.id),
+        codes: codeIndex[this.props.match.params.id],
         activeFile: null
     }
 
     componentDidMount(){
         this.getReadme()
         this.setState({
-            activeFile : this.state.codes.codes[0]
+            activeFile : this.state.codes[0]
         })
     }
 
