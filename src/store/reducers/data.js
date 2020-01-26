@@ -12,7 +12,7 @@ export default [
     {
         name: 'ReduxThunk',
         date: [2020,0,19],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.',
+        description: 'Aynchronous code in redux by using a third party library called thunk. Normally you cant fetch data from somewhere with redux. With this redux middleware it is possible!',
         readme: null
     },
     {
