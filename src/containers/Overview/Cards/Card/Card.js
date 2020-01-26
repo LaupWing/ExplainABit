@@ -37,7 +37,7 @@ class Card extends Component{
     }
     render(){
         import(`../../../../ComponentLib/${this.props.meta.name}/index.js`).then((file)=>{
-            file.default(this.cardRef)
+            file.default(this.cardRef.current, 'scaledDown')
         })
         const daysAgo = moment(this.props.meta.date).fromNow()
         return (
@@ -50,13 +50,13 @@ class Card extends Component{
                         <h2 className='name'>{this.props.meta.name.replace(/([A-Z])/g, ' $1').trim()}</h2>
                         <h2 className={classes.added}><span>Added: </span>{daysAgo}</h2>
                     </header>
-                    <main>
+                    <main className='card'>
                         <div 
                             className={`${classes.description} ${classes[this.state.descriptionClass]}`}
                         >
                             <p>{this.props.meta.description}</p>
                         </div>
-                        <div ref={this.cardRef} className={classes.componentContainer}>
+                        <div ref={this.cardRef} className={classes.componentContainer +' component'}>
                         </div>
                     </main>
                     <Button 

@@ -29,3 +29,29 @@ li{
     justify-content: center;
     flex-direction: column;
 }
+
+/* Inside component styling (global component styling) */
+.component > div{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.component > div button{
+    padding: 5px 10px;
+    background: transparent;
+    border: var(--turqoise) solid 2px;
+    border-radius: 100px;
+    color: var(--turqoise);
+    cursor: pointer;
+    transition: .25s;
+}
+.component > div button:hover{
+    background: var(--turqoise);
+    color: var(--darkBlue);
+}
+.card .component > div button,
+.card .component > div h3{
+    transform: scale(.7);
+} 

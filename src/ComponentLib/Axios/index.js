@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const init = (cardContainer)=>{
+const init = (cardContainer, name)=>{
     const axios =(
-        <div>
+        <div className={name}>
             Axios
         </div>
     )
-    if(cardContainer){
-        console.log(cardContainer)
-        ReactDOM.render(axios, cardContainer.current);
-    }else{
-        ReactDOM.render(axios, document.getElementById('output'));
-    }
+    ReactDOM.render(axios, cardContainer);
 }
 export default init
