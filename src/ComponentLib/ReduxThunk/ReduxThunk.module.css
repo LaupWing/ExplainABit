@@ -1,0 +1,16 @@
+.ReduxThunk{
+    height: 100%;
+}
+.ReduxThunk ul{
+    margin: 10px 0;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.ReduxThunk ul > div{
+    margin: 10px 0;
+}
+
+.ReduxThunk ul > div > p{
+    color: var(--blue)
+}

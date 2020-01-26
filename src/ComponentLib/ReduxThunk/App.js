@@ -1,17 +1,24 @@
 import React, {Component} from 'react'
 import * as actionCreators from './actions/todos'
 import {connect} from 'react-redux'
+import classes from './ReduxThunk.module.css'
+
 class App extends Component{
 
     render(){
-        const list = this.props.list.map(post=>{
-            console.log(post)
+        const posts = this.props.posts.map((post,i)=>{
+            return (
+                <div key={i}>
+                    <h4>{post.title}</h4>
+                    <p>{post.body}</p>
+                </div>
+            )
         })
         return(
-            <div>
+            <div className={classes.ReduxThunk}>
                 <button onClick={this.props.fetchPosts}>Fetch</button>
                 <ul>
-                    {list}
+                    {posts}
                 </ul>
             </div>
         )
@@ -25,7 +32,7 @@ const mapDispatchToProps = dispatch =>{
 }
 const mapStateToProps = state =>{
     return{
-        list: state.posts
+        posts: state.posts
     }
 }
 

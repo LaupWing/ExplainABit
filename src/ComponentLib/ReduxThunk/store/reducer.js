@@ -5,9 +5,10 @@ const initialState = {
 const reducer = (state=initialState, action)=>{
     switch(action.type){
         case 'INITPOSTS':
+            console.log(action)
             return{
                 ...state,
-                todos: action.value
+                posts: action.value
             }
         case 'ADDPOST':
             return {
