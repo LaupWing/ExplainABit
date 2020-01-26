@@ -38,6 +38,9 @@ class Card extends Component{
     render(){
         import(`../../../../ComponentLib/${this.props.meta.name}/index.js`).then((file)=>{
             file.default(this.cardRef.current, 'scaledDown')
+            this.cardRef.current.querySelectorAll('div button').forEach(btn=>{
+                btn.addEventListener('click', (e)=>e.stopPropagation())
+            })
         })
         const daysAgo = moment(this.props.meta.date).fromNow()
         return (
