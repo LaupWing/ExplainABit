@@ -1,4 +1,4 @@
-# Repository Title Goes Here
+# Basic Redux
 
 > Subtitle or Short Description Goes Here
 

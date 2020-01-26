@@ -2,105 +2,21 @@
 export default [
     {
         type: 'jsx',
-        fileName: 'App.js',
-        code: `
-            import React, {Component} from 'react'
-            import classes from './BasicRedux.module.css'
-            import {connect} from 'react-redux'
-
-            class App extends Component{
-                
-                render(){
-                    return (
-                        <div className={classes[this.props.name]}>
-                            <h3>{this.props.title} {this.props.counter}</h3>
-                            <div className={classes.buttons}>
-                                <button onClick={this.props.onIncrement}>Add 1</button>
-                                <button onClick={()=>this.props.addXAmount(5)}>Add 5</button>
-                                <button onClick={this.props.onDecrement}>Remove 1</button>
-                                <button onClick={()=>this.props.onDecrementX(5)}>Remove 5</button>
-                            </div>
-                        </div>)
-                }
-            }
-
-            const mapStateToProps = (state)=>{
-                return{
-                    counter: state.counter,
-                    title: state.message
-                }
-            }
-
-            const mapDispatchToProps = dispatch =>{
-                return{
-                    onIncrement: () => dispatch({type: 'INCREMENT'}),
-                    addXAmount: (value) => dispatch({type: 'ADDXAMOUNT', value}),
-                    onDecrement: () => dispatch({type: 'DECREMENT'}),
-                    onDecrementX: (value) => dispatch({type: 'DECREMENTXAMOUNT', value})
-                }
-            }
-
-            export default connect(mapStateToProps, mapDispatchToProps)(App)
-        `
-    },
-    {
-        type: 'javascript',
-        fileName: 'store/reducer.js',
-        code:`
-            const initialState = {
-                counter: 0,
-                message: 'Result: '
-            }
-            
-            const reducer = (state=initialState, action)=>{
-                console.log(action)
-                switch(action.type){
-                    case 'INCREMENT':
-                        return {
-                            ...state,
-                            counter: state.counter + 1
-                        }
-                    case 'ADDXAMOUNT':
-                        return {
-                            ...state,
-                            counter: state.counter + action.value
-                        }
-                    case 'DECREMENT':
-                        return{
-                            ...state,
-                            counter: state.counter - 1
-                        }
-                    case 'DECREMENTXAMOUNT':
-                        return {
-                            ...state,
-                            counter: state.counter - action.value
-                        }
-                    default: return state
-                }
-            }
-            
-            export default reducer
-        `
-    },
-    {
-        type: 'jsx',
         fileName: 'index.js',
         code: `
             import React from 'react';
             import ReactDOM from 'react-dom';
-            import {createStore} from 'redux'
+            import {createStore, applyMiddleware} from 'redux'
             import {Provider} from 'react-redux'
             import reducer from './store/reducer'
-            import BasicRedux from './App'
-            
-            // #### This init is a wrapper specific for this website 
-            // #### just overlook the init wrapper part
+            import ReduxThunk from './App'
+            import thunk from 'redux-thunk'
             
             const init = (cardContainer, name)=>{
-                const store = createStore(reducer)
+                const store = createStore(reducer, applyMiddleware(thunk))
                 ReactDOM.render(
                     <Provider store={store}>
-                        <BasicRedux name={name}/>
+                        <ReduxThunk name={name}/>
                     </Provider>, cardContainer);
             }
             
@@ -108,24 +24,99 @@ export default [
         `
     },
     {
-        type: 'css',
-        fileName: 'main.css',
+        type: 'jsx',
+        fileName: 'App.js',
         code: `
-            .buttons{
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
+            import React, {Component} from 'react'
+            import * as actionCreators from './actions/todos'
+            import {connect} from 'react-redux'
+            import classes from './ReduxThunk.module.css'
+            
+            class App extends Component{
+            
+                render(){
+                    const posts = this.props.posts.map((post,i)=>{
+                        return (
+                            <div key={i}>
+                                <h4>{post.title}</h4>
+                                <p>{post.body}</p>
+                            </div>
+                        )
+                    })
+                    return(
+                        <div className={classes.ReduxThunk}>
+                            <button onClick={this.props.fetchPosts}>Fetch</button>
+                            <ul>
+                                {posts}
+                            </ul>
+                        </div>
+                    )
+                }
             }
-            .scaledDown button{
-                margin: 2px;
+            
+            const mapDispatchToProps = dispatch =>{
+                return{
+                    fetchPosts: ()=> dispatch(actionCreators.fetchPosts())
+                }
             }
-            .normalSize{
-                height: 100%;
+            const mapStateToProps = state =>{
+                return{
+                    posts: state.posts
+                }
             }
-            .normalSize button{
-                margin: 10px;
+            
+            export default connect(mapStateToProps, mapDispatchToProps)(App)
+        `
+    },
+    {
+        type: 'javascript',
+        fileName: 'actions/todos.js',
+        code:`
+            export const onInitPosts = (value) =>{
+                return{
+                    type: 'INITPOSTS',
+                    value
+                }
             }
+            
+            export const fetchPosts = () =>{
+                return dispatch =>{
+                    fetch('https://jsonplaceholder.typicode.com/posts')
+                        .then(response => response.json())
+                        .then(json => {
+                            const splitted = json.slice(0,20)
+                            return dispatch(onInitPosts(splitted))
+                        })
+                }
+            }
+        `
+    },
+    {
+        type: 'javascript',
+        fileName: 'store/reducers.js',
+        code: `
+            const initialState = {
+                posts: [],
+            }
+            
+            const reducer = (state=initialState, action)=>{
+                switch(action.type){
+                    case 'INITPOSTS':
+                        console.log(action)
+                        return{
+                            ...state,
+                            posts: action.value
+                        }
+                    case 'ADDPOST':
+                        return {
+                            ...state,
+                            posts: state.posts.concat(action.value)
+                        }
+                    default: return state
+                }
+            }
+            
+            export default reducer
         `
     }
 ]

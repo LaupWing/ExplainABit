@@ -51,6 +51,11 @@
 .DetailReadme pre {
     margin: 15px 0;
 }
+.DetailReadme blockquote p{
+    border-left: .25em solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
+  }
 .DetailReadme ul >li{
     margin: 0;
 }
