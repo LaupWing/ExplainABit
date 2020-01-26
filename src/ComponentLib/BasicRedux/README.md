@@ -1,25 +1,10 @@
 # Basic Redux
 
-> Subtitle or Short Description Goes Here
+> A library where you can hold a global state
 
-> ideally one sentence
+## This project
+This project is really basic. You have total four buttons each adding or subtracting an x amount of the result. This adding and subtracting is handled from within redux.
 
-> include terms/tags that can be searched
-
-**Badges will go here**
-
-- build status
-- issues (waffle.io maybe)
-- devDependencies
-- npm package
-- coverage
-- slack
-- downloads
-- gitter chat
-- license
-- etc.
-
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Pending Pull-Requests] [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
 - For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
 
