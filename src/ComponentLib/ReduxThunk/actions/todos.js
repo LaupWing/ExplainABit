@@ -6,8 +6,13 @@ export const onInitPosts = (value) =>{
 }
 
 export const fetchPosts = () =>{
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(json => console.log(json))
-    return dispatch  =>dispatch(onInitPosts('test'))
+    return dispatch =>{
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(json => {
+                const splitted = json.slice(0,20)
+                console.log(splitted)
+                return dispatch(onInitPosts(splitted))
+            })
+    }
 }

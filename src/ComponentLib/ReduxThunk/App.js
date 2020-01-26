@@ -2,12 +2,16 @@ import React, {Component} from 'react'
 import * as actionCreators from './actions/todos'
 import {connect} from 'react-redux'
 class App extends Component{
+
     render(){
+        const list = this.props.list.map(post=>{
+            console.log(post)
+        })
         return(
             <div>
-                <button>Fetch</button>
+                <button onClick={this.props.fetchPosts}>Fetch</button>
                 <ul>
-                    <li></li>
+                    {list}
                 </ul>
             </div>
         )
@@ -16,8 +20,13 @@ class App extends Component{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        fetchPosts: dispatch(actionCreators.fetchPosts())
+        fetchPosts: ()=> dispatch(actionCreators.fetchPosts())
+    }
+}
+const mapStateToProps = state =>{
+    return{
+        list: state.posts
     }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

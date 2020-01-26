@@ -1,5 +1,5 @@
 const initialState = {
-    todos: [],
+    posts: [],
 }
 
 const reducer = (state=initialState, action)=>{
@@ -12,7 +12,7 @@ const reducer = (state=initialState, action)=>{
         case 'ADDPOST':
             return {
                 ...state,
-                todos: state.todos.concat(action.value)
+                posts: state.posts.concat(action.value)
             }
         default: return state
     }
