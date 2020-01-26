@@ -47,7 +47,7 @@ class Detail extends Component{
             <Aux>
                 {   metaData
                     ?   <Aux>
-                            <h2><span>Name:</span>{metaData.name}</h2>
+                            <h2><span className={classes.title}>Name: </span>{metaData.name.replace(/([A-Z])/g, ' $1').trim()}</h2>
                             <p>{metaData.description}</p>
                             <main className={classes.DetailContent}>
                                 <DetailReadme

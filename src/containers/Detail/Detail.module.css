@@ -13,3 +13,6 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.title{
+    color: var(--darkTurqoise);
+}

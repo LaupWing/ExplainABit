@@ -7,7 +7,7 @@ export default [
     {
         name: 'BasicRedux',
         date: [2020,0,20],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
+        description: 'A very barebones basic redux counter app. Counter which simply just adds or subtracts a number using the redux library'
     },
     {
         name: 'Axios',
