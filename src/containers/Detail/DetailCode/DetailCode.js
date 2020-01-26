@@ -17,10 +17,17 @@ export default (props)=>{
                 }
             }
             return (
-                <li onClick={()=>props.clicked(code)} className={classes[liClasses]} key={code.fileName}>{code.fileName}</li>
+                <li 
+                    onClick={()=>props.clicked(code)} 
+                    className={classes[liClasses]} 
+                    key={code.fileName}
+                >
+                    {code.fileName}
+                </li>
             )
         })
         const findCodeActiveFile = codesIndex[props.meta.name].find(c=>c.fileName===props.activeFile.fileName)
+
         let initialWhiteSpace = null 
         const tabFixed = findCodeActiveFile
             .code.split(/\n/)
@@ -35,6 +42,7 @@ export default (props)=>{
                 return c.slice(-sliceSize)
             })
             .join("\r\n")
+            
         code = findCodeActiveFile.type === 'jsx'
             ? (
                 <Highlight className={findCodeActiveFile.type}>
