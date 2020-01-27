@@ -12,8 +12,7 @@ export default [
     {
         name: 'ReduxThunk',
         date: [2020,0,19],
-        description: 'Aynchronous code in redux by using a third party library called thunk. Normally you cant fetch data from somewhere with redux. With this redux middleware it is possible!',
-        readme: null
+        description: 'Aynchronous code in redux by using a third party library called thunk. Normally you cant fetch data from somewhere with redux. With this redux middleware it is possible!'
     },
     {
         name: 'Axios',

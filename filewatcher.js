@@ -30,23 +30,30 @@ const removeItemFromCodeExporter = (name) =>{
     return filterOut
 }
 
-    // {
-    //     name: 'Axios',
-    //     date: [2020,0,21],
-    //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
-    // }
-
 const addToStoreData = (name)=>{
     const data = fs.readFileSync('./src/store/reducers/data.js').toString()
-    console.log(data.replace('export default ', ''))
-    const newObj ={
-        name: 'Dummy',
-        date: [2020,0,21],
+    const date = new Date()
+    const newObj =`
+    {
+        name: '${name}',
+        date: [${date.getFullYear()},${date.getMonth()},${date.getDate()}],
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
-    }
-    console.log(data.split('},').splice(da))
+    `
+    const splitted = data.split('},')
+    splitted.splice(splitted.length-2, 0, `\n${newObj.split('\n').filter(x=>x!=='').join('\n')}`)
+    return splitted.join('},')
 }
-console.log(addToStoreData())
+
+const removeItemFromData = (name) =>{
+    const data = fs.readFileSync('./src/store/reducers/data.js').toString()
+    return `export default [${data
+        .replace('export default [')
+        .split('},')
+        .filter(x=>!x.includes(name))
+        .join('},')}`
+}
+// console.log(addToStoreData('test'))
+console.log(removeItemFromData('Axios'))
 
 fs.watch(folderPath, (eventType, filename) => {
     const latestSnapshot = totalFiles
