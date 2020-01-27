@@ -5,167 +5,66 @@
 ## This project
 This project is really basic. You have total four buttons each adding or subtracting an x amount of the result. This adding and subtracting is handled from within redux.
 
+## Folder structure
+-   📁 store
+    -   📄 reducer.js
+-   📄 App.js
+-   📄 Index.js
+-   📄 BasicRedux.module.css
 
-- For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
+## Code explaination
 
-***INSERT ANOTHER GRAPHIC HERE***
+### Reducer (store/reducer.js)
+In the reducer you have to define the shared state of your app. In the reducer arrow function you have 2 parameters first the state itself and second the action.
+``` javascript
+const reducer = (state=initialState, action)=>{
+``` 
+The state is always the current state of your application. What you usually do is set an initials state in the parameters to define your state starting point.
 
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
+Action, or rather actions are the action/actions you want to perform on your state. These actions are defined by you and these actions tells the reducer what to do with the data in the state.
 
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
+### Connect Reducer to redux (index.js)
+The reducer that you have created needs to be connected to the root of your app to in able to use it with your app. In order to connect redux with your app you need another package called `react-redux`.
 
-> Tips
+First you need to create a store with the `createStore` method from the `redux` library. This does what it saids. It creates your first redux store!
+```javascript
+const store = createStore(reducer)
+```
 
-- HAVE WHITE SPACE
-- MAKE IT PRETTY
-- GIFS ARE REALLY COOL
-
-> GIF Tools
-
-- Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s.
-- For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s.
-
-**Recordit**
-
-
-**ttystudio**
-
-![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)
-
----
-
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
-
----
-
-## Example (Optional)
+To connect your store with react you need to get the `Provider` component from the `react-redux` library. This `Provider` component always needs a store prop and has to wrap around the component where you want to use this redux store. Most of the time you want to wrap your whole App in this `Provider` component.
 
 ```javascript
-// code away!
-
-let generateProject = project => {
-  let code = [];
-  for (let js = 0; js < project.length; js++) {
-    code.push(js);
-  }
-};
+const store = createStore(reducer)
+ReactDOM.render(
+    <Provider store={store}>
+        <BasicRedux name={name}/>
+    </Provider>, cardContainer);
 ```
 
----
+### Use the store in the Components (App.js)
+In order to use the store in the component you want. You need to connect your redux store first with the component you want to use it in. To do this you need to import the `connect` methods from the `react-redux` library
 
-## Installation
+In the connect you have two parameters. First is the state you want and second is the actions. Both of these parameters are functions which returns an object with the action/state you want to use in the component. The action is a little diffrent. In the action function function you get a parameter called `dispatch` which dispatches a action, which eventually changes something in the state.
 
-- All the `code` required to get started
-- Images of what it should look like
+Both the state and dispatch you have declared can be found in the props of the component, with the name you have declared in the return object.
 
-### Clone
+And in the return function of the connect you wrap the component.
 
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
-### Setup
-
-- If you want more syntax highlighting, format your code like this:
-
-> update and install this package first
-
-```shell
-$ brew update
-$ brew install fvcproductions
+```javascript
+const mapStateToProps = (state)=>{
+    return{
+    // store the counter of the state in the props.counter of this component
+        counter: state.counter,
+        title: state.message
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return{
+        onIncrement: () => dispatch({type: 'INCREMENT'}),
+        addXAmount: (value) => dispatch({type: 'ADDXAMOUNT', value}),
+        onDecrement: () => dispatch({type: 'DECREMENT'}),
+        onDecrementX: (value) => dispatch({type: 'DECREMENTXAMOUNT', value})
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
-
-> now install npm and bower packages
-
-```shell
-$ npm install
-$ bower install
-```
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer
-
----
-
-## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
-
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
-
----
-
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using
-
----
-
-## Team
-
-> Or Contributors/People
-
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
-
----
-
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
-
----
-
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at 
-- Twitter at 
-- Insert more social links here.
-
----
-
-## Donations (Optional)
-
-- You could include a link as well.
-
-[![Support via Gratipay](https://lh3.googleusercontent.com/vRaD5xgLx3NtSW8HD9t7CIJRls_rttfQrQBdi88WjmMWR2QlAe12zH97_1MJyK4nmup5wUUkUIdZtV0LHSYJmrPvmjGqRm-bWQb7ujZaJnwNlaQefYvK5XcVk2Q0ZQYVv3q9Dn2JAYHI98IrHTHEfsyD1I1dVvzEUVQuvMMO85sqKaYa7YephwTE4BdNqodoDkVS3D0pHMN1UM8UsAt6dSqxfGzOA0dSv7G3fC1SQ4P3haUFfK6vjJpCLFAOeft8L3oct82VX0jyHKZpr6zWuqutrLzXlrED87H67gUzV2OXM4OD0_sTCNJQcvDxxmzn_gjbCGrYMYEbXg3YnPZ52wxOWfHiMWcC0Bg2IfMbq6YftCnqsvECYXUbNo0FnW18fSsnyZxJu6ixoLzBOCceQMtY2AjAeZqGVP3BA6pRB1IsHQbD5fOL331I0ovI0yZ-eLgYUrtTUMkqyK-bmTUOenZ0HrgiztnV0C5gY718GmxqPQc46d9BKuAzgdeG0qSjCzV2VvmMbS-OElM9Iu9kWpa955Pdq3k86qBLuQqVWg8ZmJDAfKBGrGLXSM3teNScrHYJo8G53zQN7eY5eno1wdNn4ygOmxGiq3t_rL1woe9sy23src6pQB896OI2_E9G3nbrw-YRrElNuYKC8_aa4vFL4RC9tD-Ah9aNPwIZKGbe4kPUeQ3HnA=w241-h209-no)](https://gratipay.com/fvcproductions/)
-
-
----
-
-## License
-
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 ©

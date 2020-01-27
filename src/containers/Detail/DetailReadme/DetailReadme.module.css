@@ -57,16 +57,24 @@
     padding: 0 1em;
   }
 .DetailReadme ul >li{
-    margin: 0;
+    /* margin: 0; */
+}
+.DetailReadme ul >li >ul{
+    margin-left: 20px;
 }
 .DetailReadme h2{
     margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 .DetailReadme td,
 .DetailReadme tr{
     display: flex;
     flex-wrap: wrap;
+}
+.DetailReadme p > code{
+    background-color: #eee;
+    padding:2px 5px;
 }
 .DetailReadme code, 
 .DetailReadme pre {
