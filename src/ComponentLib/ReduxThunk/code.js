@@ -24,6 +24,29 @@ export default [
         `
     },
     {
+        type: 'javascript',
+        fileName: 'actions/todos.js',
+        code:`
+            export const onInitPosts = (value) =>{
+                return{
+                    type: 'INITPOSTS',
+                    value
+                }
+            }
+            
+            export const fetchPosts = () =>{
+                return dispatch =>{
+                    fetch('https://jsonplaceholder.typicode.com/posts')
+                        .then(response => response.json())
+                        .then(json => {
+                            const splitted = json.slice(0,20)
+                            return dispatch(onInitPosts(splitted))
+                        })
+                }
+            }
+        `
+    },
+    {
         type: 'jsx',
         fileName: 'App.js',
         code: `
@@ -66,29 +89,6 @@ export default [
             }
             
             export default connect(mapStateToProps, mapDispatchToProps)(App)
-        `
-    },
-    {
-        type: 'javascript',
-        fileName: 'actions/todos.js',
-        code:`
-            export const onInitPosts = (value) =>{
-                return{
-                    type: 'INITPOSTS',
-                    value
-                }
-            }
-            
-            export const fetchPosts = () =>{
-                return dispatch =>{
-                    fetch('https://jsonplaceholder.typicode.com/posts')
-                        .then(response => response.json())
-                        .then(json => {
-                            const splitted = json.slice(0,20)
-                            return dispatch(onInitPosts(splitted))
-                        })
-                }
-            }
         `
     },
     {

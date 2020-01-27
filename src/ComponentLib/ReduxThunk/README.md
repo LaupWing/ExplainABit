@@ -1,186 +1,98 @@
-# Repository Title Goes Here
+# Redux Thunk 
 
-> Subtitle or Short Description Goes Here
+> A library where you can use asychronous code with redux
 
-> ideally one sentence
+## This project
+This projects simply fetches some data from the jsonplaceholder api and displays them in an unorderd list. 
 
-> include terms/tags that can be searched
+## Folder structure
+-   📁 store
+    -   📄 reducer.js
+-   📁 actions
+    -   📄 posts.js
+-   📄 App.js
+-   📄 index.js
+-   📄 ReduxThunk.module.css
 
-**Badges will go here**
+## Code explaination
 
-- build status
-- issues (waffle.io maybe)
-- devDependencies
-- npm package
-- coverage
-- slack
-- downloads
-- gitter chat
-- license
-- etc.
+### Setting up thunk (index.js)
+The first thing you do is setting up your basic redux environment. I dont explain the setup for redux here for the explaination about redux you can [click here](https://www.google.com). 
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Pending Pull-Requests] [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
+When your redux environment is ready you can install the redux library (ofcourse you can do this before, it doesnt really matter). Import `thunk` from `redux-thunk`
 
-- For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
-
-***INSERT ANOTHER GRAPHIC HERE***
-
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
-
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
-
-> Tips
-
-- HAVE WHITE SPACE
-- MAKE IT PRETTY
-- GIFS ARE REALLY COOL
-
-> GIF Tools
-
-- Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s.
-- For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s.
-
-**Recordit**
-
-
-**ttystudio**
-
-![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)
-
----
-
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
-
----
-
-## Example (Optional)
 
 ```javascript
-// code away!
-
-let generateProject = project => {
-  let code = [];
-  for (let js = 0; js < project.length; js++) {
-    code.push(js);
-  }
-};
+import thunk from 'redux-thunk'
 ```
 
----
+To add `thunk` to your store you need to also import the `applyMiddleware` method from the `redux` library. The `applyMiddleware` registers the middleware you want to use in conjunction with the store. The `applyMiddleware` has to be passed as a second parameter in the `createStore` method and invoke it with `thunk` as your parameter.
+```javascript
+import thunk from 'redux-thunk'
+import {createStore, applyMiddleware} from 'redux'
 
-## Installation
-
-- All the `code` required to get started
-- Images of what it should look like
-
-### Clone
-
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
-### Setup
-
-- If you want more syntax highlighting, format your code like this:
-
-> update and install this package first
-
-```shell
-$ brew update
-$ brew install fvcproductions
+const store = createStore(reducer, applyMiddleware(thunk))
+ReactDOM.render(
+    <Provider store={store}>
+        <ReduxThunk name={name}/>
+    </Provider>, cardContainer);
 ```
 
-> now install npm and bower packages
+### Using thunk to use asynchronous code (actions/todos.js)
+After you registered thunk as a middleware in you the file where you have your store, you can delay your dispatches to fetch some data or some other asynchronous actions. A best practice with using thunk is storing all your actions in another file. The `redux-thunk` gives your actions behind the scene an `dispatch` method, which you can call later in order to dispatch an action when your asynchronous code has finished.
 
-```shell
-$ npm install
-$ bower install
+As you can see below the action is now seperated and is only activated when the asynchronous code is finished. In the example below the `fetchPosts` function is called from within the app and will dispatch the `onInitPosts` in the future when the fetching of data is finished. The dispatch method is giving by `redux-thunk` behind the scenes.
+
+```javascript
+export const onInitPosts = (value) =>{
+    return{
+        type: 'INITPOSTS',
+        value
+    }
+}
+            
+export const fetchPosts = () =>{
+    return dispatch =>{
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(json => {
+                const splitted = json.slice(0,20)
+                return dispatch(onInitPosts(splitted))
+            })
+    }
+}
 ```
 
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer
+### Triggering the fetchPosts in the app (App.js)
+Triggering the redux action is exactly the same as in your basic redux. Just register the dispatch function you want to your app with `connect` and just use activate the function when needed in your app from the `props` property.
+```javascript 
 
----
+class App extends Component{
+            
+    render(){
+        const posts = this.props.posts.map((post,i)=>{
+            return (
+                <div key={i}>
+                    <h4>{post.title}</h4>
+                    <p>{post.body}</p>
+                </div>
+            )
+        })
+        return(
+            <div className={classes.ReduxThunk}>
+                <button onClick={this.props.fetchPosts}>Fetch</button>
+                <ul>
+                    {posts}
+                </ul>
+            </div>
+        )
+    }
+}
 
-## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
-
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
-
----
-
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using
-
----
-
-## Team
-
-> Or Contributors/People
-
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
-
----
-
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
-
----
-
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at 
-- Twitter at 
-- Insert more social links here.
-
----
-
-## Donations (Optional)
-
-- You could include a link as well.
-
-[![Support via Gratipay](https://lh3.googleusercontent.com/vRaD5xgLx3NtSW8HD9t7CIJRls_rttfQrQBdi88WjmMWR2QlAe12zH97_1MJyK4nmup5wUUkUIdZtV0LHSYJmrPvmjGqRm-bWQb7ujZaJnwNlaQefYvK5XcVk2Q0ZQYVv3q9Dn2JAYHI98IrHTHEfsyD1I1dVvzEUVQuvMMO85sqKaYa7YephwTE4BdNqodoDkVS3D0pHMN1UM8UsAt6dSqxfGzOA0dSv7G3fC1SQ4P3haUFfK6vjJpCLFAOeft8L3oct82VX0jyHKZpr6zWuqutrLzXlrED87H67gUzV2OXM4OD0_sTCNJQcvDxxmzn_gjbCGrYMYEbXg3YnPZ52wxOWfHiMWcC0Bg2IfMbq6YftCnqsvECYXUbNo0FnW18fSsnyZxJu6ixoLzBOCceQMtY2AjAeZqGVP3BA6pRB1IsHQbD5fOL331I0ovI0yZ-eLgYUrtTUMkqyK-bmTUOenZ0HrgiztnV0C5gY718GmxqPQc46d9BKuAzgdeG0qSjCzV2VvmMbS-OElM9Iu9kWpa955Pdq3k86qBLuQqVWg8ZmJDAfKBGrGLXSM3teNScrHYJo8G53zQN7eY5eno1wdNn4ygOmxGiq3t_rL1woe9sy23src6pQB896OI2_E9G3nbrw-YRrElNuYKC8_aa4vFL4RC9tD-Ah9aNPwIZKGbe4kPUeQ3HnA=w241-h209-no)](https://gratipay.com/fvcproductions/)
-
-
----
-
-## License
-
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 ©
+const mapDispatchToProps = dispatch =>{
+    return{
+        fetchPosts: ()=> dispatch(actionCreators.fetchPosts())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+``` 
