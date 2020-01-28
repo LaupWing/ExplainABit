@@ -60,7 +60,6 @@ const removeItemFromData = (name) =>{
 
 const changeSomething = (path, oldName, newName)=>{
     const data = fs.readFileSync(path).toString()
-    console.log(data)
     return replaceAll(data, oldName, newName)
 }
 
@@ -70,7 +69,11 @@ fs.watch(folderPath, (eventType, filename) => {
     .filter(file=>!file.endsWith('.js'))
     .length
     console.log(eventType)
-    if(eventType === 'rename'){
+    if(
+        eventType === 'rename' &&
+        totalFilesNow === totalFiles
+    ){
+        console.log('-------------------------rename------------------------')
         const includes = filesSnapshot.includes(filename)
         if(includes)    return
         const currrentFiles =  getAllFiles().filter(file=>!file.endsWith('.js'))
@@ -78,46 +81,53 @@ fs.watch(folderPath, (eventType, filename) => {
         const oldName = difference[0]
 
         const changedCodeIndex = changeSomething(`${folderPath}/codesIndex.js`,oldName, filename)
-        console.log(changedCodeIndex)
         fs.writeFile(`${folderPath}/codesIndex.js`, changedCodeIndex, (err)=>{
             if(err) return console.log(err)
             console.log(`Succesfully changed codeIndex from ${oldName} to ${filename}`)
         })
 
-        // const changedReducerData = changeSomething(dataPath, oldName, filename)
-        // fs.writeFile(dataPath, changedReducerData, (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully change reducer data from ${oldName} to ${filename}`)
-        // })
+        const changedReducerData = changeSomething(dataPath, oldName, filename)
+        fs.writeFile(dataPath, changedReducerData, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully change reducer data from ${oldName} to ${filename}`)
+        })
     }
     else if(totalFilesNow > latestSnapshot){
-        // fs.writeFile(`${folderPath}/${filename}/index.js`, indexjs, (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully wrote a index.js file in ${filename}`)
-        // })
-        // fs.writeFile(`${folderPath}/${filename}/App.js`, app, (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully wrote a App.js file in ${filename}`)
-        // })
-        // fs.writeFile(`${folderPath}/${filename}/README.md`, readme, (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully wrote a README.md file in ${filename}`)
-        // })
-        // fs.writeFile(`${folderPath}/${filename}/code.js`, codes, (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully wrote a code.js file in ${filename}`)
-        // })
-        // fs.writeFile(dataPath, addToStoreData(filename), (err)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`Succesfully rewritten data.js file in reducers with the name${filename}`)
-        // })
-        // console.log(addToStoreData(filename))
-        // console.log(addNewCodeExporter(filename))
-    }else if(totalFilesNow !== latestSnapshot){
-        console.log(eventType)
-        console.log('deleted--------------------------')
-        console.log(removeItemFromData(filename))
-        // console.log(removeItemFromCodeExporter(filename))
+        console.log('-------------------------added------------------------')
+        fs.writeFile(`${folderPath}/${filename}/index.js`, indexjs, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully wrote a index.js file in ${filename}`)
+        })
+        fs.writeFile(`${folderPath}/${filename}/App.js`, app, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully wrote a App.js file in ${filename}`)
+        })
+        fs.writeFile(`${folderPath}/${filename}/README.md`, readme, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully wrote a README.md file in ${filename}`)
+        })
+        fs.writeFile(`${folderPath}/${filename}/code.js`, codes, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully wrote a code.js file in ${filename}`)
+        })
+        fs.writeFile(dataPath, addToStoreData(filename), (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully added ${filename} to data.js file in reducers`)
+        })
+        fs.writeFile(`${folderPath}/codesIndex.js`, addNewCodeExporter(filename), (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully added ${filename} to codeIndex.js file in ComponentLib`)
+        })
+    }else if(totalFilesNow < latestSnapshot){
+        console.log('-------------------------deleted------------------------')
+        fs.writeFile(`${folderPath}/codesIndex.js`, removeItemFromCodeExporter(filename), (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully deleted ${filename} from codeIndex`)
+        })
+        fs.writeFile(dataPath, removeItemFromData(filename), (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully deleted ${filename} from reducer data`)
+        })
     }
     filesSnapshot = getAllFiles()
         .filter(file=>!file.endsWith('.js'))
