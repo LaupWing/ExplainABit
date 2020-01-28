@@ -44,7 +44,6 @@ const addToStoreData = (name)=>{
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
     `
     const splitted = data.split('},')
-    console.log(splitted)
     splitted.splice(splitted.length-1, 0, `\n${newObj.split('\n').filter(x=>x!=='').join('\n')}`)
     return splitted.join('},')
 }
