@@ -33,6 +33,7 @@ const removeItemFromCodeExporter = (name) =>{
     return filterOut
 }
 
+
 const addToStoreData = (name)=>{
     const data = fs.readFileSync('./src/store/reducers/data.js').toString()
     const date = new Date()
@@ -57,12 +58,14 @@ const removeItemFromData = (name) =>{
         .join('},')}`
 }
 
-const changeNameInData = (oldName, newName)=>{
-    const data = fs.readFileSync(dataPath).toString()
+const changeSomething = (path, oldName, newName)=>{
+    const data = fs.readFileSync(path).toString()
     return replaceAll(data, oldName, newName)
 }
 
-console.log(changeNameInData('Axios', 'Test'))
+console.log(changeSomething(dataPath,'Axios', 'Test'))
+console.log()
+
 fs.watch(folderPath, (eventType, filename) => {
     const latestSnapshot = totalFiles
     const totalFilesNow = getAllFiles()
@@ -75,7 +78,18 @@ fs.watch(folderPath, (eventType, filename) => {
         const currrentFiles =  getAllFiles().filter(file=>!file.endsWith('.js'))
         const difference = filesSnapshot.filter(x => !currrentFiles.includes(x));
         const oldName = difference[0]
-        console.log('rename type', filename)
+
+        const changedCodeIndex = changeSomething(`${folderPath}/codesIndex.js`,oldName, filename)
+        fs.writeFile(`${folderPath}/codeIndex.js`, changedCodeIndex, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully changed codeIndex from ${oldName} to ${filename}`)
+        })
+
+        const changedReducerData = changeSomething(dataPath, oldName, newName)
+        fs.writeFile(dataPath, changedReducerData, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully change reducer data from ${oldName} to ${filename}`)
+        })
     }
     else if(totalFilesNow > latestSnapshot){
         // fs.writeFile(`${folderPath}/${filename}/index.js`, indexjs, (err)=>{
@@ -105,7 +119,6 @@ fs.watch(folderPath, (eventType, filename) => {
         console.log(removeItemFromData(filename))
         // console.log(removeItemFromCodeExporter(filename))
     }
-    console.log('----------------------end-------------------')
     filesSnapshot = getAllFiles()
         .filter(file=>!file.endsWith('.js'))
     totalFiles = totalFilesNow
