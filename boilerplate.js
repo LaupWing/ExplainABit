@@ -12,6 +12,13 @@ const readme =`
 ## Code explaination
 `
 
+const baseStyling=`
+.App h1{
+    font-size: 16px;
+    color: green;
+}
+`
+
 const indexjs =`
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -38,14 +45,14 @@ export default [
 ]
 
 `
-const app =`
+const app = (name)=> `
 import React, {Component} from 'react'
+import classes from './${name}.module.css'
 
 class App extends Component{
-
     render(){
         return(
-            <div>
+            <div className={classes.App}>
                 <h1>Your App</h1>
             </div>
         )
@@ -59,5 +66,6 @@ module.exports ={
     app,
     codes,
     indexjs,
-    readme
+    readme,
+    baseStyling
 }

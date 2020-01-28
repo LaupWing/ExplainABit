@@ -5,9 +5,9 @@ const {
     app,
     codes,
     indexjs,
-    readme
+    readme,
+    baseStyling
 } = require('./boilerplate')
-
 let totalFiles = null
 let filesSnapshot= []
 
@@ -97,7 +97,7 @@ fs.watch(folderPath, (eventType, filename) => {
             if(err) return console.log(err)
             console.log(`Succesfully wrote a index.js file in ${filename}`)
         })
-        fs.writeFile(`${folderPath}/${filename}/App.js`, app, (err)=>{
+        fs.writeFile(`${folderPath}/${filename}/App.js`, app(filename), (err)=>{
             if(err) return console.log(err)
             console.log(`Succesfully wrote a App.js file in ${filename}`)
         })
@@ -116,6 +116,10 @@ fs.watch(folderPath, (eventType, filename) => {
         fs.writeFile(`${folderPath}/codesIndex.js`, addNewCodeExporter(filename), (err)=>{
             if(err) return console.log(err)
             console.log(`Succesfully added ${filename} to codeIndex.js file in ComponentLib`)
+        })
+        fs.writeFile(`${folderPath}/${filename}/${filename}.module.css`, baseStyling, (err)=>{
+            if(err) return console.log(err)
+            console.log(`Succesfully added ${filename}.module.css ${filename}`)
         })
     }else if(totalFilesNow < latestSnapshot){
         console.log('-------------------------deleted------------------------')
