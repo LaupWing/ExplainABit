@@ -30,7 +30,7 @@ const addNewCodeExporter = (name) =>{
 const removeItemFromCodeExporter = (name) =>{
     const data = fs.readFileSync(`${folderPath}/codesIndex.js`).toString().split('\n')
     const filterOut = data.filter(item=>!item.includes(name))
-    return filterOut
+    return filterOut.join('\n')
 }
 
 
@@ -51,7 +51,7 @@ const addToStoreData = (name)=>{
 const removeItemFromData = (name) =>{
     const data = fs.readFileSync(dataPath).toString()
     return `export default [${data
-        .replace('export default [')
+        .replace('export default [', '')
         .split('},')
         .filter(x=>!x.includes(name))
         .join('},')}`
@@ -132,7 +132,6 @@ fs.watch(folderPath, (eventType, filename) => {
         .filter(file=>!file.endsWith('.js'))
     totalFiles = totalFilesNow
 })
-
 
 // Utility Functions
 function replaceAll(str, find, replace) {
