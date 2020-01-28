@@ -60,11 +60,9 @@ const removeItemFromData = (name) =>{
 
 const changeSomething = (path, oldName, newName)=>{
     const data = fs.readFileSync(path).toString()
+    console.log(data)
     return replaceAll(data, oldName, newName)
 }
-
-console.log(changeSomething(dataPath,'Axios', 'Test'))
-console.log()
 
 fs.watch(folderPath, (eventType, filename) => {
     const latestSnapshot = totalFiles
@@ -80,16 +78,17 @@ fs.watch(folderPath, (eventType, filename) => {
         const oldName = difference[0]
 
         const changedCodeIndex = changeSomething(`${folderPath}/codesIndex.js`,oldName, filename)
-        fs.writeFile(`${folderPath}/codeIndex.js`, changedCodeIndex, (err)=>{
+        console.log(changedCodeIndex)
+        fs.writeFile(`${folderPath}/codesIndex.js`, changedCodeIndex, (err)=>{
             if(err) return console.log(err)
             console.log(`Succesfully changed codeIndex from ${oldName} to ${filename}`)
         })
 
-        const changedReducerData = changeSomething(dataPath, oldName, newName)
-        fs.writeFile(dataPath, changedReducerData, (err)=>{
-            if(err) return console.log(err)
-            console.log(`Succesfully change reducer data from ${oldName} to ${filename}`)
-        })
+        // const changedReducerData = changeSomething(dataPath, oldName, filename)
+        // fs.writeFile(dataPath, changedReducerData, (err)=>{
+        //     if(err) return console.log(err)
+        //     console.log(`Succesfully change reducer data from ${oldName} to ${filename}`)
+        // })
     }
     else if(totalFilesNow > latestSnapshot){
         // fs.writeFile(`${folderPath}/${filename}/index.js`, indexjs, (err)=>{
@@ -114,7 +113,8 @@ fs.watch(folderPath, (eventType, filename) => {
         // })
         // console.log(addToStoreData(filename))
         // console.log(addNewCodeExporter(filename))
-    }else{
+    }else if(totalFilesNow !== latestSnapshot){
+        console.log(eventType)
         console.log('deleted--------------------------')
         console.log(removeItemFromData(filename))
         // console.log(removeItemFromCodeExporter(filename))
