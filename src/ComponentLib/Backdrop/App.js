@@ -9,8 +9,15 @@ class App extends Component{
     render(){
         return(
             <div className={classes.App}>
-                <Backdrop show={this.state.show} clicked={()=>this.setState({show:false})}/>
-                <button onClick={()=>this.setState({show:true})}>Show Backdrop</button>
+                <Backdrop 
+                    show={this.state.show} 
+                    clicked={()=>this.setState({show:false})}
+                />
+                <button 
+                    onClick={()=>this.setState({show:true})}
+                >
+                    Show Backdrop
+                </button>
             </div>
         )
     }

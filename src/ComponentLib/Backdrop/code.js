@@ -8,7 +8,11 @@ export default [
             import classes from './Backdrop.module.css'
             
             export default (props) =>(
-                props.show ? <div className={classes.Backdrop} onClick={props.clicked}></div> : null
+                props.show 
+                ? <div 
+                    className={classes.Backdrop} 
+                    onClick={props.clicked}></div> 
+                : null
             )
             `
     },
@@ -26,8 +30,15 @@ export default [
                 render(){
                     return(
                         <div className={classes.App}>
-                            <Backdrop show={this.state.show} clicked={()=>this.setState({show:false})}/>
-                            <button onClick={()=>this.setState({show:true})}>Show Backdrop</button>
+                            <Backdrop 
+                                show={this.state.show} 
+                                clicked={()=>this.setState({show:false})
+                            }/>
+                            <button 
+                                onClick={()=>this.setState({show:true})}
+                            >
+                                Show Backdrop
+                            </button>
                         </div>
                     )
                 }

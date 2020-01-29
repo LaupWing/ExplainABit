@@ -31,6 +31,10 @@ In the App (or another parent component where you imported the backdrop from) yo
         show={this.state.show} 
         clicked={()=>this.setState({show:false})
     }/>
-    <button onClick={()=>this.setState({show:true})}>Show Backdrop</button>
+    <button 
+        onClick={()=>this.setState({show:true})}
+    >
+        Show Backdrop
+    </button>
 </div>
 ```
