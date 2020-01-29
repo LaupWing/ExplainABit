@@ -1,12 +1,14 @@
 
-# Name
+# Backdrop
 
-> Short description
+> **Just** a black Backdrop in React
 
 ## This project
+Just a simple transparent black backdrop showed when you click on the button the center.
 
 ## Folder structure
--   📁 folder
--   📄 file
+-   📄 Backdrop.js
+-   📄 App.js
+-   📄 index.js
 
 ## Code explaination

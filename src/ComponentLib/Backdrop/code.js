@@ -1,11 +1,40 @@
 
 export default [
     {
-        type: 'javascript',
-        fileName: 'example.js',
+        type: 'jsx',
+        fileName: 'Backdrop.js',
         code: `
-            put ya code here   
-        `
+            import React from 'react'
+            import classes from './Backdrop.module.css'
+            
+            export default (props) =>(
+                props.show ? <div className={classes.Backdrop} onClick={props.clicked}></div> : null
+            )
+            `
+    },
+    {
+        type: 'jsx',
+        fileName: 'App.js',
+        code: `
+            import React, {Component} from 'react'
+            import classes from './Backdrop.module.css'
+            import Backdrop from './Backdrop'
+            class App extends Component{
+                state={
+                    show: false
+                }
+                render(){
+                    return(
+                        <div className={classes.App}>
+                            <Backdrop show={this.state.show} clicked={()=>this.setState({show:false})}/>
+                            <button onClick={()=>this.setState({show:true})}>Show Backdrop</button>
+                        </div>
+                    )
+                }
+            }
+            
+            export default App        
+            `
     },
 ]
 
