@@ -27,6 +27,6 @@ export default [
     {
         name: 'BackdropWithModal',
         date: [2020,0,30],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
+        description: 'This projects builds on the basic Backdrop project. Now a modal will be show when the backdrop is active.'
     },
 ]

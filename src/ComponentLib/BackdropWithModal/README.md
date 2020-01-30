@@ -6,7 +6,13 @@
 ## This project
 
 ## Folder structure
--   📁 folder
--   📄 file
+-   📁 Backdrop
+    -   📄 Backdrop.js
+    -   📄 Backdrop.module.css
+-   📁 Modal
+    -   📄 Modal.js
+    -   📄 Modal.module.css
+-   📄 index.js
+-   📄 App.js
 
 ## Code explaination
