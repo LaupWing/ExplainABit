@@ -22,6 +22,11 @@ export default [
     {
         name: 'Backdrop',
         date: [2020,0,29],
+        description: 'Just a tiny backdrop and only the backdrop'
+    },
+    {
+        name: 'BackdropWithModal',
+        date: [2020,0,30],
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum augue, dapibus non nisl eget, lobortis rhoncus nisl. Praesent nec dictum justo. Quisque non pharetra enim, auctor dapibus felis.'
     },
 ]

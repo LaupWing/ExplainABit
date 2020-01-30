@@ -5,5 +5,6 @@ Codes['Axios'] = require('./Axios/code').default;
 Codes['BasicRedux'] = require('./BasicRedux/code').default;
 Codes['ReduxThunk'] = require('./ReduxThunk/code').default;
 Codes['Backdrop'] = require('./Backdrop/code').default;
+Codes['BackdropWithModal'] = require('./BackdropWithModal/code').default;
 
 export default Codes
