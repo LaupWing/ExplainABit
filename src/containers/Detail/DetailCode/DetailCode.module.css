@@ -16,6 +16,16 @@
 .FileNav{
     display: flex;
     background: var(--darkBlue);
+    overflow-x: auto;
+}
+.FileNav::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+    height: 5px;
+}
+.FileNav::-webkit-scrollbar-thumb {
+    background: var(--darkTurqoise); 
+    border-radius: 5px;
 }
 
 .FileNav li{
